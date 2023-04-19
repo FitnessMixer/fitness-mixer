@@ -1,11 +1,11 @@
 from App.models import User
 from App.database import db
 
-def create_user(username,password,email):
-    newuser = User(username=username, password=password,email=email)
+def create_user(self):
+    # newuser = User(username=username, password=password,email=email)
     db.session.add(self);
     db.session.commit()
-    return newuser
+    return self;
 
 def get_user_by_username(username):
     return User.query.filter_by(username=username).first()
