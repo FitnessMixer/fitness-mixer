@@ -30,7 +30,7 @@ def signup():
     if(user):
         flash("ADDED")  # error message
 
-    return render_template("users.html")
+    return render_template("login.html")
 
 
 
