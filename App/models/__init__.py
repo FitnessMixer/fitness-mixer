@@ -1,4 +1,5 @@
-# from .user import *
+
+from .user import *
 # from .exercise import *
 # from .staff import *
 # from .customer import *

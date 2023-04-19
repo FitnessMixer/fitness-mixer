@@ -45,31 +45,3 @@ def create_app(config_overrides={}):
     setup_flask_login(app)
     app.app_context().push()
     return app
-
-@app.route("/", methods=['GET'])
-def login():
-   return redirect(url_for('home_page'))
-
-
-@app.route('/signup',methods=['POST'])
-def signup_user_view():
-  data = request.json
-  
-  if not all(key in data for key in ['username','email','password']):
-    return jsonify({'Error': 'Missing required fields'}),400
-
-  user = User.query.filter_by(username=data['username']).first()
-  email= User.query.filter_by(email=data['email']).first()
-  
-  if email or user:
-    return jsonify(error='username or email already exists'),400
-  
-  newuser = User(username=data['username'], email=data['email'], password=data['password'])
-
-  db.session.add(newuser)
-  db.session.commit()
-  return jsonify(message=f'{newuser.username} created' ), 201
-
-
-if __name__ == "__main__":
-  app.run(host='0.0.0.0', port=81)
