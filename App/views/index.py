@@ -1,5 +1,5 @@
-from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify
-from App.models import db
+from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash
+from App.models import User, db
 from App.controllers import create_user
 
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
@@ -22,3 +22,42 @@ def health_check():
 @index_views.route('/users', methods=['GET'])
 def displaySignup():
     return render_template('users.html')
+
+@index_views.route('/signup', methods=['POST'])
+def signup():
+    data=request.form
+    user=create_user(username=data["username"],password=data["password"],email=data["email"])
+    if(user):
+        flash("ADDED")  # error message
+
+    return render_template("users.html")
+  
+#API STUFF
+
+import requests
+
+url = "https://calories-burned-by-api-ninjas.p.rapidapi.com/v1/caloriesburned"
+
+querystring = {"activity":"skiing"}
+
+headers = {
+	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
+	"X-RapidAPI-Host": "calories-burned-by-api-ninjas.p.rapidapi.com"
+}
+
+response = requests.request("GET", url, headers=headers, params=querystring)
+
+#print(response.text)
+
+
+
+url2 = "https://musclewiki.p.rapidapi.com/exercises/1"
+
+headers = {
+	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
+	"X-RapidAPI-Host": "musclewiki.p.rapidapi.com"
+}
+
+response = requests.request("GET", url2, headers=headers)
+
+#print(response.text)
