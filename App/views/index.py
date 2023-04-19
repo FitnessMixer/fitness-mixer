@@ -26,10 +26,15 @@ def displaySignup():
 @index_views.route('/signup', methods=['POST'])
 def signup():
     data=request.form
-    user=create_user(username=data["username"],password=data["password"],email=data["email"])
-    if(user):
-        flash("ADDED")  # error message
-
+    newuser= User(username=data["username"],password=data["password"],email=data["email"]);
+    try:
+    newuser.create_user();
+    login_user(newuser)  # login the user
+    flash('Account Created!')  # send message
+    render_template('users.html')  # redirect to homepage
+  except Exception:  # attempted to insert a duplicate user
+    db.session.rollback()
+    flash("username or email already exists")  # error message
     return redirect("/login")
 
 
