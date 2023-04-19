@@ -31,33 +31,55 @@ def signup():
         flash("ADDED")  # error message
 
     return render_template("users.html")
+
+
+
+@index_views.route('/', methods=['GET'])
+@index_views.route('/login', methods=['GET'])
+def login_page():
+  return render_template('login.html')
+
+
+@index_views.route('/login', methods=['POST'])
+def login_action():
+  data = request.form
+  user = User.query.filter_by(username=data['username']).first()
+  if user and user.check_password(data['password']):  # check credentials
+    flash('Logged in successfully.')  # send message to next page
+    login_user(user)  # login the user
+    return redirect('/users')  # redirect to main page if login successful
+  else:
+    flash('Invalid username or password')  # send message to next page
+  return redirect('/login')
+
+
   
 #API STUFF
 
-import requests
+# import requests
 
-url = "https://calories-burned-by-api-ninjas.p.rapidapi.com/v1/caloriesburned"
+# url = "https://calories-burned-by-api-ninjas.p.rapidapi.com/v1/caloriesburned"
 
-querystring = {"activity":"skiing"}
+# querystring = {"activity":"skiing"}
 
-headers = {
-	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
-	"X-RapidAPI-Host": "calories-burned-by-api-ninjas.p.rapidapi.com"
-}
+# headers = {
+# 	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
+# 	"X-RapidAPI-Host": "calories-burned-by-api-ninjas.p.rapidapi.com"
+# }
 
-response = requests.request("GET", url, headers=headers, params=querystring)
+# response = requests.request("GET", url, headers=headers, params=querystring)
 
-#print(response.text)
+# #print(response.text)
 
 
 
-url2 = "https://musclewiki.p.rapidapi.com/exercises/1"
+# url2 = "https://musclewiki.p.rapidapi.com/exercises/1"
 
-headers = {
-	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
-	"X-RapidAPI-Host": "musclewiki.p.rapidapi.com"
-}
+# headers = {
+# 	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
+# 	"X-RapidAPI-Host": "musclewiki.p.rapidapi.com"
+# }
 
-response = requests.request("GET", url2, headers=headers)
+# response = requests.request("GET", url2, headers=headers)
 
 #print(response.text)
