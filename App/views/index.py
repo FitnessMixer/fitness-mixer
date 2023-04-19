@@ -19,6 +19,6 @@ def init():
 def health_check():
     return jsonify({'status':'healthy'})
 
-@index_views.route('/signup', methods=['GET'])
+@index_views.route('/users', methods=['GET'])
 def displaySignup():
-    return render_template('signup.html')
+    return render_template('users.html')
