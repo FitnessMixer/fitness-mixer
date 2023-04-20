@@ -6,8 +6,11 @@ from App.controllers import create_user
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
 
 @index_views.route('/', methods=['GET'])
-def index_page():
-    return render_template('signup.html')
+def login():
+    return render_template('home.html')
+
+
+
 
 @index_views.route('/init', methods=['GET'])
 def init():
@@ -24,6 +27,11 @@ def health_check():
 def displaySignup():
     return render_template('users.html')
 
+@index_views.route('/', methods=['GET'])
+@index_views.route('/signup', methods=['GET'])
+def signup_page():
+  return render_template('signup.html')
+
 @index_views.route('/signup', methods=['POST'])
 def signup():
     data=request.form
@@ -31,7 +39,7 @@ def signup():
     try:
       login_user(newuser)  # login the user
       flash('Account Created!')  # send message
-      return render_template('login.html') # redirect to homepage
+      return render_template('home.html') # redirect to homepage
     except Exception:  # attempted to insert a duplicate user
       db.session.rollback()
       flash("username or email already exists")  # error message
@@ -49,13 +57,15 @@ def login_page():
 def login_action():
   data = request.form
   user = User.query.filter_by(username=data['username']).first()
+  
   if user or user.check_password(password=data['password']):  # check credentials
     flash('Logged in successfully.')  # send message to next page
     login_user(user)  # login the user
     return render_template('home.html')  # redirect to main page if login successful
+
   else:
     flash('Invalid username or password')  # send message to next page
-  return redirect('/login')
+    return redirect('/login')
 
 
   
