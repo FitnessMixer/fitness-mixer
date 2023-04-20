@@ -30,11 +30,20 @@ def signup_page():
 @index_views.route('/signup', methods=['POST'])
 def signup():
     data=request.form
+<<<<<<< HEAD
     newuser=create_user(username=data["username"],password=data["password"],email=data["email"]);
     try:
       login_user(newuser)  # login the user
       flash('Account Created!')  # send message
       return render_template('home.html') # redirect to homepage
+=======
+    try:
+      db.session.add(newuser)
+      db.session.commit()  # save user
+      login_user(newuser)  # login the user
+      flash('Account Created!')  # send message
+      return render_template('login.html') # redirect to homepage
+>>>>>>> ef0eed9 (signup works)
     except Exception:  # attempted to insert a duplicate user
       db.session.rollback()
       flash("username or email already exists")  # error message

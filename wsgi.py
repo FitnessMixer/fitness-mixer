@@ -16,7 +16,11 @@ migrate = get_migrate(app)
 def initialize():
     db.drop_all()
     db.create_all()
+<<<<<<< HEAD
     create_user('bob', 'bobpass','bob@gmail.com')
+=======
+    create_user(username='bob', password='bobpass',email='bob@email.com')
+>>>>>>> ef0eed9 (signup works)
     print('database intialized')
 
 '''
