@@ -1,150 +1,126 @@
-:root{
-    --background: #DAD7CD;
-    --secondary: #A3B18A;
-    --tertiary: #588157;
-    --primary: #3A5A40;
-    --alert: #344E41;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background: #fc4a1a;
+    background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);
+    background: linear-gradient(to right, #f7b733, #fc4a1a) */
+    
 }
 
-.fill-space{
-    min-height: 100%;
-}
-
-
-.grow-2{
-    grid-column: span 2 
-}
-nav,
-footer{
-    background-color: var(--secondary);
-    color: white;
-}
-
-#alert {
-    background-color: var(--alert);
-    position: relative;
-    padding: 1em;
-    color: white;
-}
-
-#close {
-    position: absolute;
-    top: 1px;
-    right: 10px;
-    color: white;
-    font-size: 1.5em;
-    text-decoration: none;
-}
-
-#close:hover {
-    cursor: pointer;
-    /* change the cursor to a pointer on hover */
-}
-
-.content-wrapper {
-    background-color: var(--secondary);
-}
-
-.content{
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 4fr 4fr 4fr;
-    min-height: 100% !important;
-}
-
-.justify-content{
+.background {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 500vh;
+  animation: background-fade 35s infinite;
+}
+
+@keyframes background-fade {
+    0% {
+      background-image: url('/images/2ndlike.jpeg');
+    }
+    10% {
+      background-image: url('/images/image2.jpeg');
+    }
+    20% {
+      background-image: url('/images/image3.jpeg');
+    }
+    30% {
+      background-image: url('/images/image4.jpeg');
+    }
+    40% {
+      background-image: url('/images/firstlike.jpeg');
+    }
+    50% {
+      background-image: url('/images/very vibrant.jpeg');
+    }
+    60% {
+        background-image: url('/images/image7.jpeg');
+      }
+    70% {
+        background-image: url('/image8.jpeg');
+      }
+    80% {
+        background-image: url('/images/image9.jpeg');
+      }
+    90% {
+        background-image: url('/images/image10.jpeg');
+      }
+    100% {
+        background-image: url('/images/lastlike.jpeg');
+      }
+  }
+
+.card {
+    border-radius: 10px;
+    padding: 35px 26px;
+    width: 400px
+}
+
+.abt {
+    font-size: 14px
+}
+
+.inputbox {
+    margin-top: 12px;
+    position: relative
+}
+
+.inputbox input {
+    border: 2px solid #eee;
+    padding: 0 10px
+}
+
+.inputbox input:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: none;
+    outline: 0;
+    box-shadow: none;
+    border: 2px solid #0d6efd
+}
+
+.inputbox span{
+
+    font-size: 12px;
 }
 
 
+.inputbox a{
 
-img{
-    padding: 0px;
-    margin: 0px;
-    width: 100%;
-    height:100%;
-    object-fit: fill;
-}
-
-.list-container {
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    max-height: 200px;
-    overflow-y: scroll;
-    padding: 10px;
-  }
-
-  .list-item {
-    font-size: 18px;
-    padding: 5px 10px;
-    margin-bottom: 5px;
-    background-color: #f2f2f2;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-
-  .list-item:last-child {
-    margin-bottom: 0;
-  }
-  .selected-pokemon{
-    margin-left: 1.5em;
-    margin-top: 2em;
-  }
-
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-
-  .card {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: 10px;
-    width: 300px;
-  
-  }
-  .card img {
-    width: 100%;
-    height: auto;
-  }
-
-  .card-content {
-    padding: 20px;
-  }
-
-  .card-content h3 {
-    margin: 0;
-  }
-
-  .close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close-btn:hover,
-  .close-btn:focus {
-    color: black;
+    font-size: 12px;
     text-decoration: none;
-    cursor: pointer;
-  }
+}
 
-  
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  
-  .container {
-    padding: 2px 16px;
-  }
+.input-tag {
+    position: absolute;
+    top: 27px;
+    left: 7px;
+    width: 32px
+}
 
-  .center-vertical{
-    margin-top: auto;
-    margin-bottom: auto;
-  }
+.proceed button {
+ 
+    font-size: 15px
+}
+
+.form-check-label {
+    font-size: 12px
+}
+
+.btn-primary:focus {
+    color: #fff;
+    background-color: #025ce2;
+    border-color: #0257d5;
+    box-shadow: none
+}
+
+.form-check-input {
+    width: 16px;
+    height: 16px;
+    margin-top: 6px
+}
+
