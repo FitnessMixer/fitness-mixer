@@ -12,7 +12,7 @@ def __init__(self, username, password,email):
         self.username = username
         self.set_password(password)
         self.email=email
-        return True
+        self.id=id(self);
 
 def get_json(self):
     return{

@@ -32,11 +32,11 @@ def signup():
       db.session.commit()  # save user
       login_user(newuser)  # login the user
       flash('Account Created!')  # send message
-      render_template('users.html')  # redirect to homepage
+      return redirect("/login") # redirect to homepage
     except Exception:  # attempted to insert a duplicate user
       db.session.rollback()
       flash("username or email already exists")  # error message
-      return redirect("/login")
+      render_template('signup.html')
 
 
 
