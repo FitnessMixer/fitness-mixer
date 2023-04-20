@@ -1,6 +1,4 @@
-import json
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash
-from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from App.models import User, db
 from App.controllers import create_user
 
@@ -86,7 +84,19 @@ def getExercises():
 getExercises()
 #API STUFF
 
-# import requests
+def getExercises():
+    import json
+    url2 = "https://musclewiki.p.rapidapi.com/exercises/1"
+    headers = {
+	    "X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
+	    "X-RapidAPI-Host": "musclewiki.p.rapidapi.com"  
+    }
+    response = requests.request("GET", url2, headers=headers)
+    exercise_json=json.loads(response.text)
+    exercise=Exercise(name=exercise_json["exercise_name"],muscle=exercise_json["target"],category=exercise_json["Category"],difficulty=exercise_json["Difficulty"],force=exercise_json["Force"])
+    print(exercise.name)
+
+getExercises()
 
 # url = "https://calories-burned-by-api-ninjas.p.rapidapi.com/v1/caloriesburned"
 
