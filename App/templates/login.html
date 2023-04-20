@@ -1,41 +1,86 @@
-{% extends "layout.html" %}
+<!DOCTYPE html>
+<html>
 
-{% block title %}Login Page{% endblock %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Login</title>
+  <!--Bootstrap files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    type="text/css" />
 
-{% block page %}Login Page{% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </script>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+  <div class="background">
+  <div class="card">
+    <div class="text-left">
+      <a href="https://imgur.com/eyiYya1"><img src="https://i.imgur.com/eyiYya1.jpg" title="source: imgur.com" /></a>
+      <br>
+    </div>
 
 
-{% block content %}
-<div class="content fill-space">
-  <img class="grow-2" src="/static/img/stretch2.jpg">
-  <div class="subcontent center-vertical">
-    <h4 class="center">Login</h4>
-    <form id="loginForm" method="POST" action="/login" style="padding:1em">
+    <div>
+      <form id="signupForm" method="POST" action="/signup" style="padding:1em">
+        <!-- Enter ur stuff for for submission to the database here-->
 
-      <div class="row">
-        <div class="input-field col s12">
-          <input placeholder="Placeholder" id="username" name="username" type="text" class="validate">
-          <label for="username">Username</label>
+        <div class="inputbox">
+          <div class="d-flex justify-content-between align-items-center">
+            <span>Email</span>
+          </div>
+          <input type="text" name="email" type="email" class="form-control" required="required">
+
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="password" id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row justify-content">
-        <div class="col s4 card-action">
-          <input type="submit" class="blue text-white btn" value="Login">
-        </div>
+        
+           <div class="inputbox">
+          <div class="d-flex justify-content-between align-items-center">
+            <span>Username</span>
+          </div>
+          <input type="text" name="username" type="username" class="form-control" required="required">
 
-        <div class="col s8 card-action right-align">
-          <a href="/signup">Don't have an account? Sign Up</a>
         </div>
-      </div>
+        
+        <div class="inputbox">
 
-    </form>
+          <div class="d-flex justify-content-between align-items-center">
+            <span>Password</span>
+          </div>
+          <input type="password" name="password" type="password" class="form-control" required="required">
+          <button class="btn btn-primary btn-block" type="submit" class="blue text-white btn">
+            Sign up
+          </button>
+        </div>
+      </form>
+    </div>
+
+
+
+    <div class="mt-2 proceed">
+    </div>
+
+    
+    <div class="mt-2">
+
+      <button class="btn btn-outline-primary btn-block"><i class="fa fa-google"></i> Google</button>
+
+    </div>
+
   </div>
 
-</div>
-{% endblock %}
+  </div>
+  <script src="script.js"></script>
+
+  
+  </div>
+</body>
+
+</html>
