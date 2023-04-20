@@ -15,7 +15,7 @@ body {
   align-items: center;
   height: 100vh;
   width: 500vh;
-  animation: background-fade 35s infinite;
+  animation: background-fade 30s infinite;
 }
 
 @keyframes background-fade {
