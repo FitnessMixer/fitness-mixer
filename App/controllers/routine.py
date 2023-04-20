@@ -1,12 +1,7 @@
 from App.models import Routine
 from App.database import db
 
-
 # def get_all_userRoutines(user):
-
-
-
-
 
 # def get_all_users_json():
 #     users = User.query.all()

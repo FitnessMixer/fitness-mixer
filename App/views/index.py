@@ -1,4 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash
+from flask_login import login_user
 from App.models import User, db
 from App.controllers import create_user
 
