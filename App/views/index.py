@@ -27,12 +27,8 @@ def displaySignup():
 @index_views.route('/signup', methods=['POST'])
 def signup():
     data=request.form
-    
-    newuser= User(username=data["username"],password=data["password"],email=data["email"]);  
+    newuser=create_user(username=data["username"],password=data["password"],email=data["email"]);
     try:
-      newuser.create_user();
-      db.session.add(newuser)
-      db.session.commit()  # save user
       login_user(newuser)  # login the user
       flash('Account Created!')  # send message
       return render_template('login.html') # redirect to homepage
