@@ -62,3 +62,7 @@ def signUP(self):
     db.session.add(self)
     db.session.commit()
     return True;
+
+def check_password(self, password):
+    """Check hashed password."""
+    return check_password_hash(self.password, password)
