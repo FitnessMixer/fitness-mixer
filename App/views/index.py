@@ -31,15 +31,15 @@ def signup():
     newuser= User(username=data["username"],password=data["password"],email=data["email"]);  
     try:
       newuser.create_user();
-      # db.session.add(newuser)
-      # db.session.commit()  # save user
+      db.session.add(newuser)
+      db.session.commit()  # save user
       login_user(newuser)  # login the user
       flash('Account Created!')  # send message
-      return redirect("/login") # redirect to homepage
+      return render_template('login.html') # redirect to homepage
     except Exception:  # attempted to insert a duplicate user
       db.session.rollback()
       flash("username or email already exists")  # error message
-      render_template('signup.html')
+      return render_template('signup.html')
 
 
 
