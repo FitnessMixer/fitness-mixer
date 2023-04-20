@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+  <title> Fitness Mixer</title>
+  <link rel="stylesheet" href="/home.css">
+  
+  <script src="https://kit.fontawesome.com/5eb8cc4bfc.js" crossorigin="anonymous"></script>
+
+  
+</head>
+
+<body>
+  
+  <div class="main-header">
+    <image id="img" src="images/orange logo.png" alt="title image"/>
+   
+  </div>
+    
+  <div class ="wrapper">
+    <div class ="sidebar">
+      
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-list fa-2xl"></i> Workout Lists</a></li>
+        
+        <li><a href="#"><i class="fa-solid fa-compass fa-2xl"></i>Explore Workouts</a></li>
+        
+        <li><a href="#"><i class="fa-solid fa-user fa-2xl"></i> Profile Setting</a></li>
+        
+      </ul>
+    </div> <!--end div for sidebar-->
+  </div>
+    <div class= "main-content">
+      <div class="greeting">
+        <h1>Hi {{username}}</h1>
+        <br>
+        <h3>What are we working on today?</h3>
+        <br>
+        <br>
+      </div>
+
+      <ul>
+        
+        <!-- {% if current_user.is_authenticated %}
+          {% for exercise in exercises %} -->
+            <div class="card">
+              <span class="card-title">{{Exercise.name}}
+            </div>
+          {% endfor %}
+        {% endif %}
+            
+      </ul>
+    </div> 
+    
+    <div class= "info">
+      
+    
+  </div>
+    
+  
+  
+</body>
+
+
+
+
+  
+</html>
