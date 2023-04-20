@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&family=Roboto+Mono&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  list-style:none;
+  text-decoration: none;
+  font-family:'Poppins', sans-serif;
+/*   font-family:'Roboto Mono', monospace; */
+ 
+}
+/* Hi xar */
+body{
+  background-image: url("images/shapeybg.png");
+  /* opacity: 0.4; */
+  background-size: 1400px 1000px;
+  background-repeat: no-repeat;
+  
+  /* background-color: rgba(200,100,0,.5); */
+
+  background-blend-mode: multiply; 
+  height:100%;
+  margin:0;
+}
+
+h1{
+  margin:0;
+}
+.main-header{
+  height:57px;
+  width:100%;
+  padding: 5px;
+  background:#ebe9e8; 
+  overflow:auto;
+}
+
+#img{
+  display:block;
+  text-align: center;
+  margin-top:0;
+  margin-left: auto;
+  margin-right: auto;
+  width:300px;
+/*   height:auto; */
+  padding:0;
+}
+  
+ .wrapper{
+  display:flex;
+  position: relative;
+}
+
+.wrapper .sidebar{
+  margin:0;
+  position:fixed;
+  width: 10%;
+  height:100%;
+  background: #ff882c;
+  color: white;
+  font-size: 11px;
+  align-items: center;
+}
+
+.wrapper .sidebar ul li{
+  padding: 50px;
+  border: none;
+  margin:0;
+  text-align:center;
+}
+
+.wrapper .sidebar ul li a{
+  color: rgba(255,255,255);
+  display:block;
+  padding:3px;
+  /* text-align: center/left/right; */
+ 
+}
+
+
+
+/* .wrapper .sidebar ul li a .fas{
+  height:auto;
+  
+} */
+
+.main-content .greeting{
+  display: block;
+  color:white;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.card{
+  display: block;
+  color:black;
+  background-color: #f05b16;
+  
+  /* opacity: 0.3; */
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 5px;
+  /* border: 1px solid #ccc; */
+  border-radius:10px;
+  width:400px;
+}
+
+.card .card-title:{
+  color:black;
+  opacity:1.0;
+}
