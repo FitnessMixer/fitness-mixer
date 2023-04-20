@@ -28,7 +28,8 @@ def signup():
     data=request.form
     newuser= User(username=data["username"],password=data["password"],email=data["email"]);  
     try:
-      newuser.create_user();
+      db.session.add(newuser)
+      db.session.commit()  # save user
       login_user(newuser)  # login the user
       flash('Account Created!')  # send message
       render_template('users.html')  # redirect to homepage
