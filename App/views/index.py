@@ -26,9 +26,7 @@ def displaySignup():
 @index_views.route('/signup', methods=['POST'])
 def signup():
     data=request.form
-    newuser= User(username=data["username"],password=data["password"],email=data["email"]);
-    
-      
+    newuser= User(username=data["username"],password=data["password"],email=data["email"]);  
     try:
       newuser.create_user();
       login_user(newuser)  # login the user
