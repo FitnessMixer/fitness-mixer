@@ -1,3 +1,4 @@
+import json
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from App.models import User, db
@@ -68,8 +69,21 @@ def login_action():
     flash('Invalid username or password')  # send message to next page
     return redirect('/login')
 
+def getExercises():
+  import request
+  url = "https://musclewiki.p.rapidapi.com/exercises/1"
 
+  headers = {
+  	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
+  	"X-RapidAPI-Host": "musclewiki.p.rapidapi.com"
+  }
+
+  response = requests.request("GET", url, headers=headers)
+  jason=json.loads(response.text)
+  print(response.text)
+  pass
   
+getExercises()
 #API STUFF
 
 # import requests
