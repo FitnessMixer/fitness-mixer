@@ -44,11 +44,11 @@
       <ul>
         
         {% if current_user.is_authenticated %}
-          
+          {% for exercise in exercises %}
             <div class="card">
-              <span class="card-title">{{exercises.name}}
+              <span class="card-title">{{exercise.name}}
             </div>
-          
+          {% endfor %}
         {% endif %}
             
       </ul>

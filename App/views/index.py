@@ -4,6 +4,32 @@ from flask_login import login_required, login_user
 from App.models import User, db , Exercise
 from App.controllers import create_user
 
+
+
+
+def getExercises():
+  url = "https://musclewiki.p.rapidapi.com/exercises"
+  headers = {
+  	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
+  	"X-RapidAPI-Host": "musclewiki.p.rapidapi.com"
+  }
+
+  response = requests.request("GET", url, headers=headers)
+  exercise_json=json.loads(response.text)
+  muscle=exercise_json
+  #for exercises in exercise_json:
+    #exercise=Exercise(name=exercise_json["exercise_name"],muscle=exercise_json["target"],category=exercise_json["Category"],difficulty=exercise_json["Difficulty"],force=exercise_json["Force"])
+    #db.session.add(exercise)
+    #db.session.commit()
+  print(muscle[1]['Difficulty'])
+  print("Exercises added")
+  return True
+
+getExercises()
+
+
+
+
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
 
 @index_views.route('/', methods=['GET'])
@@ -47,8 +73,9 @@ def signup():
 @index_views.route('/loadlist',methods=['GET'])
 @login_required
 def loadList():
-  exercises=getExercises()
-  return exercises
+  if getExercises():
+    exercises=Exercise.query.all()
+  return render_template("home.html",exercises=exercises)
   pass
 
 @index_views.route('/', methods=['GET'])
@@ -60,7 +87,6 @@ def login_page():
 @index_views.route('/home', methods=['GET'])
 @login_required
 def home_page():
-
   return render_template('home.html')
 
 @index_views.route('/login', methods=['POST'])
@@ -76,24 +102,11 @@ def login_action():
     flash('Invalid username or password')  # send message to next page
     return redirect('/login')
 
-def getExercises():
-  import requests
-  url = "https://musclewiki.p.rapidapi.com/exercises/1"
 
-  headers = {
-  	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
-  	"X-RapidAPI-Host": "musclewiki.p.rapidapi.com"
-  }
-
-  response = requests.request("GET", url, headers=headers)
-  exercise_json=json.loads(response.text)
-  exercises=Exercise(name=exercise_json["exercise_name"],muscle=exercise_json["target"],category=exercise_json["Category"],difficulty=exercise_json["Difficulty"],force=exercise_json["Force"])
-  print(exercises.name)
-  return render_template("home.html",exercises=exercises)
   pass
   
 #getExercises()
-#<!--{% for exercise in exercises %}-->
+
 #API STUFF
 
 # url = "https://calories-burned-by-api-ninjas.p.rapidapi.com/v1/caloriesburned"
