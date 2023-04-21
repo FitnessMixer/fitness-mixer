@@ -5,10 +5,10 @@ from App.database import db
 
 class Exercise(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    name =  db.Column(db.String, nullable=False, unique=True)
-    muscle=  db.Column(db.String, nullable=False)
-    category =  db.Column(db.String, nullable=False)
-    difficulty =  db.Column(db.String, nullable=False)
+    name =  db.Column(db.String, nullable=True, unique=True)
+    muscle=  db.Column(db.String, nullable=True)
+    category =  db.Column(db.String, nullable=True)
+    difficulty =  db.Column(db.String, nullable=True)
     force= db.Column(db.String, nullable=True)
     #routines=db.relationship('Routine',secondary=user_routines,backref='exercises')
 

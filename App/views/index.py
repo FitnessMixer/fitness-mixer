@@ -15,13 +15,17 @@ def getExercises():
   }
 
   response = requests.request("GET", url, headers=headers)
-  exercise_json=json.loads(response.text)
-  muscle=exercise_json
-  #for exercises in exercise_json:
-    #exercise=Exercise(name=exercise_json["exercise_name"],muscle=exercise_json["target"],category=exercise_json["Category"],difficulty=exercise_json["Difficulty"],force=exercise_json["Force"])
+  jason=json.loads(response.text)
+  i=0
+  for x in jason:
+    if(x["Force"]):
+      exercise=Exercise(name=x["exercise_name"],muscle=x["target"]["Primary"],category=x["Category"],difficulty=x["Difficulty"],force=x["Force"])
+    Exception
+    continue
     #db.session.add(exercise)
     #db.session.commit()
-  print(muscle[1]['Difficulty'])
+
+    print(x["Force"])
   print("Exercises added")
   return True
 
