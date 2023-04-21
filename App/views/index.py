@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash
-from flask_login import login_user
+from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from App.models import User, db
 from App.controllers import create_user
 
@@ -7,11 +7,7 @@ index_views = Blueprint('index_views', __name__, template_folder='../templates')
 
 @index_views.route('/', methods=['GET'])
 def login():
-    return render_template('home.html')
-
-
-
-
+    return render_template('signup.html')
 @index_views.route('/init', methods=['GET'])
 def init():
     db.drop_all()
@@ -52,12 +48,17 @@ def signup():
 def login_page():
   return render_template('login.html')
 
+@index_views.route('/app', methods=['GET'])
+@index_views.route('/home', methods=['GET'])
+@login_required
+def home_page():
+
+  return render_template('home.html')
 
 @index_views.route('/login', methods=['POST'])
 def login_action():
   data = request.form
   user = User.query.filter_by(username=data['username']).first()
-  
   if user or user.check_password(password=data['password']):  # check credentials
     flash('Logged in successfully.')  # send message to next page
     login_user(user)  # login the user
