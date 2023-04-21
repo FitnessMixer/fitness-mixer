@@ -8,23 +8,30 @@ from App.controllers import create_user
 
 
 def getExercises():
-  url = "https://musclewiki.p.rapidapi.com/exercises"
-  headers = {
-  	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
-  	"X-RapidAPI-Host": "musclewiki.p.rapidapi.com"
-  }
 
-  response = requests.request("GET", url, headers=headers)
-  jason=json.loads(response.text)
 
-  for x in jason:
+  muscle = 'abdominals'
+  api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
+  response = requests.get(api_url, headers={'X-Api-Key': 'NwmKx1s20Ive3BSqoYMvmw==zbTgNEmqqVzTlGT4'})
+
+  if response.status_code == requests.codes.ok:
+   response_json = json.loads(response.text)
+
+# Convert the JSON string to a Python list
+  exercises = response_json
     
-    #exercises=Exercise(name=x["exercise_name"],muscle=x["target"],category=x["Category"],difficulty=x["Difficulty"],force=x["Force"])
-    #db.session.add(exercises)
-    #db.session.commit()
-    print(x["Difficulty"])
-  print("Exercises added")
-  return jason
+  for x in exercises:
+    
+      exercise=Exercise(name=x["name"],muscle=x["muscle"],category=x["type"],equipment=x['equipment'],difficulty=x["difficulty"],instructions=x["instructions"])
+      db.session.add(exercise)
+      db.session.commit()
+      print(x["name"])
+      print("Exercises added")
+    # return exercises
+  else:
+    print("Error:", response.status_code, response.text)
+
+  
 
 getExercises()
 
