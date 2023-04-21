@@ -17,19 +17,16 @@ def getExercises():
   response = requests.request("GET", url, headers=headers)
   jason=json.loads(response.text)
   i=0
-  for x in jason:
-    if(x["Force"]):
-      exercise=Exercise(name=x["exercise_name"],muscle=x["target"]["Primary"],category=x["Category"],difficulty=x["Difficulty"],force=x["Force"])
-    Exception
-    continue
-    #db.session.add(exercise)
+  #for x in jason:
+    
+    #exercises=Exercise(name=x["exercise_name"],muscle=x["target"],category=x["Category"],difficulty=x["Difficulty"],force=x["Force"])
+    #db.session.add(exercises)
     #db.session.commit()
-
-    print(x["Force"])
+  
   print("Exercises added")
-  return True
+  return jason
 
-getExercises()
+#getExercises()
 
 
 
@@ -77,9 +74,7 @@ def signup():
 @index_views.route('/loadlist',methods=['GET'])
 @login_required
 def loadList():
-  if getExercises():
-    exercises=Exercise.query.all()
-  return render_template("home.html",exercises=exercises)
+  return render_template("home.html",exercises=getExercises())
   pass
 
 @index_views.route('/', methods=['GET'])
@@ -109,6 +104,8 @@ def login_action():
 
   pass
   
+
+
 #getExercises()
 
 #API STUFF
