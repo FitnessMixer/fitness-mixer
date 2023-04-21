@@ -16,17 +16,17 @@ def getExercises():
 
   response = requests.request("GET", url, headers=headers)
   jason=json.loads(response.text)
-  i=0
-  #for x in jason:
+
+  for x in jason:
     
     #exercises=Exercise(name=x["exercise_name"],muscle=x["target"],category=x["Category"],difficulty=x["Difficulty"],force=x["Force"])
     #db.session.add(exercises)
     #db.session.commit()
-  
+    print(x["Difficulty"])
   print("Exercises added")
   return jason
 
-#getExercises()
+getExercises()
 
 
 
