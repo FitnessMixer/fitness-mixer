@@ -77,6 +77,19 @@ def loadList():
   return render_template("home.html",exercises=getExercises())
   pass
 
+@index_views.route('/mylist',methods=['GET'])
+@login_required
+def mylist():
+  return render_template('home.html')
+  pass
+
+@index_views.route('/editProfile')
+@login_required
+def edit():
+  return render_template('editProfile.html')
+  pass
+
+
 @index_views.route('/', methods=['GET'])
 @index_views.route('/login', methods=['GET'])
 def login_page():
@@ -100,8 +113,6 @@ def login_action():
   else:
     flash('Invalid username or password')  # send message to next page
     return redirect('/login')
-
-
   pass
   
 

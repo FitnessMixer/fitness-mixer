@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+  <title> Fitness Mixer</title>
+  <link rel="stylesheet" href="/static/home.css">
+  
+  <script src="https://kit.fontawesome.com/5eb8cc4bfc.js" crossorigin="anonymous"></script>
+
+  
+</head>
+
+<body>
+  
+  <div class="main-header">
+    <image id="img" src="/static/img/orange logo.png" alt="title image"/>
+   
+  </div>
+    
+  <div class ="wrapper">
+    <div class ="sidebar">
+      
+      <ul>
+        <li><a href="/mylist"><i class="fa-solid fa-list fa-2xl"></i> Workout Lists</a></li>
+        
+        <li><a href="/loadlist"><i class="fa-solid fa-compass fa-2xl"></i>Explore Workouts</a></li>
+        
+        <li><a href="/editProfile"><i class="fa-solid fa-user fa-2xl"></i> Profile Setting</a></li>
+        
+      </ul>
+    </div> <!--end div for sidebar-->
+  </div>
+    <div class= "main-content">
+        <div class="card">
+        <form id="editProfileForm" method="POST" action="/editProfile" style="padding:1em">
+            <!-- Enter ur stuff for for submission to the database here-->
+            <div class="inputbox">
+              <div class="d-flex justify-content-between align-items-center">
+                <span>Email</span>
+              </div>
+              <input type="text" name="email" type="email" class="form-control" required="required">
+            </div>
+              <div class="inputbox">
+              <div class="d-flex justify-content-between align-items-center">
+                <span>Username</span>
+              </div>
+              <input type="text" name="username" type="username" class="form-control" required="required">
+              </div>
+            <div class="inputbox">
+              <div class="d-flex justify-content-between align-items-center">
+                <span>Password</span>
+              </div>
+              <input type="password" name="password" type="password" class="form-control" required="required">
+            </div>
+            <div class="subcontent center-vertical">
+            <button class="btn btn-primary btn-block" type="submit" class="blue text-white btn">
+              Sign up
+            </button>
+            </div>
+        </form>
+        </div>
+        
+    </div> 
+    
+    <div class= "info">
+      
+    
+  </div>
+    
+  
+  
+</body>
+  
+</html>

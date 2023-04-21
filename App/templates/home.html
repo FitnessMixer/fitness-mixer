@@ -45,7 +45,7 @@
         
         {% if current_user.is_authenticated %}
           {% for exercise in exercises %}
-            <div class="card" padding:1em>
+            <div class="card" style=padding:1em>
               <span class="card-title">{{exercise["exercise_name"]}}
                 <p>Target: {{exercise["target"]["Primary"]}}</p>
                 <p>Force: {{exercise["Force"]}}</p>
