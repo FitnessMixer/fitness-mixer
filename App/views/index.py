@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
-import requests
-import login_user
->>>>>>> c5cd01e (yhh)
+import requests, json
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash
 from App.models import User, db
 from App.controllers import create_user
@@ -82,7 +78,7 @@ def login_action():
     return redirect('/login')
 
 def getExercises():
-  import request
+  import requests
   url = "https://musclewiki.p.rapidapi.com/exercises/1"
 
   headers = {
