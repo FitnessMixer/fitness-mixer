@@ -23,7 +23,7 @@
     <div class ="sidebar">
       
       <ul>
-        <li><a href="#"><i class="fa-solid fa-list fa-2xl"></i> Workout Lists</a></li>
+        <li><a href="/loadlist"><i class="fa-solid fa-list fa-2xl"></i> Workout Lists</a></li>
         
         <li><a href="#"><i class="fa-solid fa-compass fa-2xl"></i>Explore Workouts</a></li>
         
@@ -43,12 +43,12 @@
 
       <ul>
         
-        <!-- {% if current_user.is_authenticated %}
-          {% for exercise in exercises %} -->
+        {% if current_user.is_authenticated %}
+          
             <div class="card">
-              <span class="card-title">{{Exercise.name}}
+              <span class="card-title">{{exercises.name}}
             </div>
-          {% endfor %}
+          
         {% endif %}
             
       </ul>

@@ -44,7 +44,12 @@ def signup():
       flash("username or email already exists")  # error message
       return render_template('signup.html')
 
-
+@index_views.route('/loadlist',methods=['GET'])
+@login_required
+def loadList():
+  exercises=getExercises()
+  return exercises
+  pass
 
 @index_views.route('/', methods=['GET'])
 @index_views.route('/login', methods=['GET'])
@@ -82,26 +87,14 @@ def getExercises():
 
   response = requests.request("GET", url, headers=headers)
   exercise_json=json.loads(response.text)
-  exercise=Exercise(name=exercise_json["exercise_name"],muscle=exercise_json["target"],category=exercise_json["Category"],difficulty=exercise_json["Difficulty"],force=exercise_json["Force"])
-  print(exercise.name)
+  exercises=Exercise(name=exercise_json["exercise_name"],muscle=exercise_json["target"],category=exercise_json["Category"],difficulty=exercise_json["Difficulty"],force=exercise_json["Force"])
+  print(exercises.name)
+  return render_template("home.html",exercises=exercises)
   pass
   
-getExercises()
+#getExercises()
+#<!--{% for exercise in exercises %}-->
 #API STUFF
-
-def getExercises():
-    import json
-    url2 = "https://musclewiki.p.rapidapi.com/exercises/1"
-    headers = {
-	    "X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
-	    "X-RapidAPI-Host": "musclewiki.p.rapidapi.com"  
-    }
-    response = requests.request("GET", url2, headers=headers)
-    exercise_json=json.loads(response.text)
-    exercise=Exercise(name=exercise_json["exercise_name"],muscle=exercise_json["target"],category=exercise_json["Category"],difficulty=exercise_json["Difficulty"],force=exercise_json["Force"])
-    print(exercise.name)
-
-getExercises()
 
 # url = "https://calories-burned-by-api-ninjas.p.rapidapi.com/v1/caloriesburned"
 
