@@ -1,6 +1,6 @@
 import requests, json
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash
-from flask_login import login_required
+from flask_login import login_required, login_user
 from App.models import User, db , Exercise
 from App.controllers import create_user
 
@@ -33,8 +33,9 @@ def signup_page():
 def signup():
     data=request.form
     try:
-      db.session.add(newuser)
-      db.session.commit()  # save user
+      newuser=create_user(username=data["username"],password=data["password"],email=data["email"])
+      #db.session.add(newuser)
+      #db.session.commit()  # save user
       login_user(newuser)  # login the user
       flash('Account Created!')  # send message
       return render_template('login.html') # redirect to homepage
