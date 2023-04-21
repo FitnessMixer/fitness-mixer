@@ -3,23 +3,14 @@ from flask_login import UserMixin
 from App.database import db
 
 
-<<<<<<< HEAD
-user_routines = db.Table('user_routines',
-    db.Column('exercise_id', db.Integer, db.ForeignKey('exercise.id'), primary_key=True),
-    db.Column('routine_id', db.Integer, db.ForeignKey('routine.id'), primary_key=True)
-)
-
-class Excercise(db.Model, UserMixin):
-=======
 class Exercise(db.Model, UserMixin):
->>>>>>> f367b67 (exercise api)
     id = db.Column(db.Integer, primary_key=True)
     name =  db.Column(db.String, nullable=False, unique=True)
     muscle=  db.Column(db.String, nullable=False)
     category =  db.Column(db.String, nullable=False)
     difficulty =  db.Column(db.String, nullable=False)
     force= db.Column(db.String, nullable=True)
-    routines=db.relationship('Routine',secondary=user_routines,backref='exercises')
+    #routines=db.relationship('Routine',secondary=user_routines,backref='exercises')
 
 
     def __init__(self,name,muscle,category,difficulty,force):

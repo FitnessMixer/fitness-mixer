@@ -1,6 +1,7 @@
 import requests, json
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash
-from App.models import User, db
+from flask_login import login_required
+from App.models import User, db , Exercise
 from App.controllers import create_user
 
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
@@ -31,20 +32,12 @@ def signup_page():
 @index_views.route('/signup', methods=['POST'])
 def signup():
     data=request.form
-<<<<<<< HEAD
-    newuser=create_user(username=data["username"],password=data["password"],email=data["email"]);
-    try:
-      login_user(newuser)  # login the user
-      flash('Account Created!')  # send message
-      return render_template('home.html') # redirect to homepage
-=======
     try:
       db.session.add(newuser)
       db.session.commit()  # save user
       login_user(newuser)  # login the user
       flash('Account Created!')  # send message
       return render_template('login.html') # redirect to homepage
->>>>>>> ef0eed9 (signup works)
     except Exception:  # attempted to insert a duplicate user
       db.session.rollback()
       flash("username or email already exists")  # error message
@@ -87,8 +80,9 @@ def getExercises():
   }
 
   response = requests.request("GET", url, headers=headers)
-  jason=json.loads(response.text)
-  print(response.text)
+  exercise_json=json.loads(response.text)
+  exercise=Exercise(name=exercise_json["exercise_name"],muscle=exercise_json["target"],category=exercise_json["Category"],difficulty=exercise_json["Difficulty"],force=exercise_json["Force"])
+  print(exercise.name)
   pass
   
 getExercises()
