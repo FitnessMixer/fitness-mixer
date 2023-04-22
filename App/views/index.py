@@ -53,7 +53,6 @@ def signup():
 @index_views.route('/loadlist',methods=['GET'])
 @login_required
 def loadList():
-  getExercises()
   return render_template("home.html",exercises=Exercise.query.all())
   pass
 
