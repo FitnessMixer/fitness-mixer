@@ -8,8 +8,6 @@ from App.controllers import create_user
 
 
 def getExercises():
-
-
   muscle = 'abdominals'
   api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
   response = requests.get(api_url, headers={'X-Api-Key': 'NwmKx1s20Ive3BSqoYMvmw==zbTgNEmqqVzTlGT4'})
@@ -33,7 +31,7 @@ def getExercises():
 
   
 
-getExercises()
+#getExercises()
 
 
 

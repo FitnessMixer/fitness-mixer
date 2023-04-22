@@ -33,31 +33,43 @@
     </div> <!--end div for sidebar-->
   </div>
     <div class= "main-content">
-        <div class="card">
-        <form id="editProfileForm" method="POST" action="/editProfile" style="padding:1em">
-            <!-- Enter ur stuff for for submission to the database here-->
+      <div class="card">
+        
+          <!-- Enter ur stuff for for submission to the database here-->
+          <form method="POST" action="/editemail">
+            <span>Edit email</span>
             <div class="inputbox">
               <div class="d-flex justify-content-between align-items-center">
-                <span>Email</span>
-              </div>
-              <input type="text" name="email" type="email" class="form-control" required="required">
+                <input type="text" id=1 name="new_email" class="form-control">
+                <button class="btn btn-primary btn-block" type="submit" class="blue text-white btn"> Edit</button>
+              </div> 
             </div>
+        </form>
+          <form method="POST" action="/editusername">
+              <span>Edit Username</span>
               <div class="inputbox">
-              <div class="d-flex justify-content-between align-items-center">
-                <span>Username</span>
-              </div>
-              <input type="text" name="username" type="username" class="form-control" required="required">
-              </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <input type="text" id=1 name="new_user" class="form-control">
+                  <button class="btn btn-primary btn-block" type="submit" class="blue text-white btn"> Edit</button>
+                </div> 
+                </div>
+            </form>
+          <form method="POST" action="/editpassword">
+            <span>Edit Password</span>
             <div class="inputbox">
               <div class="d-flex justify-content-between align-items-center">
-                <span>Password</span>
+                <input type="text" id=1 name="new_password" placeholder="Enter new password" class="form-control">
+                <button class="btn btn-primary btn-block" type="submit" class="blue text-white btn"> Edit</button>
+              </div> 
               </div>
-              <input type="password" name="password" type="password" class="form-control" required="required">
+      </div>
+    </div>
+
+            </div>
+              <!--<input type="password" name="password" type="password" class="form-control" required="required">-->
             </div>
             <div class="subcontent center-vertical">
-            <button class="btn btn-primary btn-block" type="submit" class="blue text-white btn">
-              Sign up
-            </button>
+            
             </div>
         </form>
         </div>
