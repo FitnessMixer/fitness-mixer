@@ -70,7 +70,7 @@ def signup():
       #db.session.commit()  # save user
       login_user(newuser)  # login the user
       flash('Account Created!')  # send message
-      return render_template('login.html') # redirect to homepage
+      return redirect('/home') # redirect to homepage
     except Exception:  # attempted to insert a duplicate user
       db.session.rollback()
       flash("username or email already exists")  # error message
