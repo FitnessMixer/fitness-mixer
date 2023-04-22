@@ -7,6 +7,30 @@ from App.controllers.user import create_user,editEmail,check_password
 
 
 
+def getExercises():
+  url = "https://musclewiki.p.rapidapi.com/exercises"
+  headers = {
+  	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
+  	"X-RapidAPI-Host": "musclewiki.p.rapidapi.com"
+  }
+
+  response = requests.request("GET", url, headers=headers)
+  jason=json.loads(response.text)
+
+  for x in jason:
+    muscle=x["target"]["Primary"][0]
+    if x["Force"]:
+      exercises=Exercise(name=x["exercise_name"],muscle=muscle,category=x["Category"],difficulty=x["Difficulty"],force=x["Force"])
+      db.session.add(exercises);
+    else:
+      exercises=Exercise(name=x["exercise_name"],muscle=muscle,category=x["Category"],difficulty=x["Difficulty"],force="None")
+      db.session.add(exercises);
+    db.session.commit()
+    #print(x["Difficulty"])
+  print("Exercises added")
+  return jason
+
+
 
 
   
@@ -59,7 +83,8 @@ def loadList():
 @index_views.route('/mylist',methods=['GET'])
 @login_required
 def mylist():
-  return render_template('home.html')
+  myex=Exercise.query.all()
+  return render_template('home.html',exercises=myex)
   pass
 
 @index_views.route('/editProfile')
