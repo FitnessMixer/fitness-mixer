@@ -46,12 +46,12 @@
         {% if current_user.is_authenticated %}
           {% for exercise in exercises %}
             <div class="card" style=padding:1em>
-              <span class="card-title">{{exercise["name"]}}
-                <p>Target: {{exercise["muscle"]}}</p>
-                <p>Force: {{exercise["Equipment"]}}</p>
-                <p>Category: {{exercise["Category"]}}</p>
-                <p>Difficulty: {{exercise["Difficulty"]}}</p>
-                <p>Steps: {{exercise["Instructions"]}}</p>
+              <span class="card-title">{{exercise.name}}
+                <p>Muscle: {{exercise.muscle}}</p>
+                <p>Equipment: {{exercise.equipment}}</p>
+                <p>Category: {{exercise.category}}</p>
+                <p>Difficulty: {{exercise.difficulty}}</p>
+                <p>Steps: {{exercise.instructions}}</p>
                 <div class="card-action">
             </div>
           {% endfor %}
