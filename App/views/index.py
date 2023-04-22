@@ -113,7 +113,7 @@ def login_action():
   if user and user.check_password(password=data['password']):  # check credentials
     flash('Logged in successfully.')  # send message to next page
     login_user(user)  # login the user
-    return render_template('home.html')  # redirect to main page if login successful
+    return redirect('/home')  # redirect to main page if login successful
 
   else:
     flash('Invalid username or password')  # send message to next page
@@ -170,6 +170,14 @@ def edit_password():
       flash('Password Changed Unsucessful.')  # send message to next page
    
    return redirect('/home')
+
+
+@index_view.route('/logout', methods=['GET'])
+@login_required
+def logout_action():
+  logout_user()
+  flash('Logged Out')
+  return redirect('/login')
    
 
 
