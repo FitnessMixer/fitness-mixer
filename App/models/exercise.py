@@ -9,9 +9,9 @@ class Exercise(db.Model, UserMixin):
     muscle=  db.Column(db.String, nullable=True,default=None)
     equipment=db.Column(db.String, nullable=True,default=None)
     category =  db.Column(db.String, nullable=True,default=None)
-    difficulty =  db.Column(db.String, nullable=True,default=None, default="None")
+    difficulty =  db.Column(db.String, nullable=True,default=None)
     instructions=db.Column(db.String, nullable=True,default=None)
-    routine = db.relationship('Routine', backref='exercise', lazy=True, cascade="all, delete-orphan")
+    #routine = db.relationship('Routine', backref='exercise', lazy=True, cascade="all, delete-orphan")
 
 
 

@@ -1,7 +1,7 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 from App.database import db
-from App.models import User,exercise
+from App.models import User, Exercise
 class Routine(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     userID=db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)

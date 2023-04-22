@@ -1,20 +1,21 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 from App.database import db
-from App.models.exercise import Routine
+#from App.models import Exercise
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username =  db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String(120), nullable=False)
     email =  db.Column(db.String, nullable=False, unique=True)
-    # no_routines=db.Column(db.Integer,nullable=True,default=0);
-    routine = db.relationship('Routine', backref='user', lazy=True, cascade="all, delete-orphan")
+    no_routines=db.Column(db.Integer,nullable=True,default=0);
+    #routine = db.relationship('Routine', backref='user', lazy=True, cascade="all, delete-orphan")
 
-    def __init__(self, username, password,email):
+    def __init__(self, username, password,email, no_routines):
         self.username = username
         self.set_password(password)
         self.email=email
+        self.no_routines=no_routines
         self.id=id(self)
 
     def get_json(self):
