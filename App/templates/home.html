@@ -35,9 +35,8 @@
   </div>
     <div class= "main-content">
       <div class="greeting">
-        <h1 style="color:black">Hi {{username}}</h1>
-        <br>
-        <h3>What are we working on today?</h3>
+        <h1 style="color:black">Welcome {{current_user.username}}</h1>
+        <h3 style="color:black">What are we working on today?</h3>
         <br>
         <br>
       </div>
@@ -45,15 +44,17 @@
       <ul>
         
         {% if current_user.is_authenticated %}
+        
           {% for exercise in exercises %}
-            <div class="card" style=padding:1em>
+            <div class="card" style="padding:1em; border: 2px solid black;">
               <span class="card-title">{{exercise.name}}
                 <p>Muscle: {{exercise.muscle}}</p>
-                <p>Equipment: {{exercise.equipment}}</p>
+                <!--<p>Equipment: {{exercise.equipment}}</p>-->
                 <p>Category: {{exercise.category}}</p>
                 <p>Difficulty: {{exercise.difficulty}}</p>
-                <p>Steps: {{exercise.instructions}}</p>
+                <!--<p>Steps: {{exercise.instructions}}</p>-->
                 <div class="card-action">
+              </div>
             </div>
           {% endfor %}
         {% endif %}
