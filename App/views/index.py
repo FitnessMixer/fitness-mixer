@@ -1,6 +1,6 @@
 import requests, json
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash,url_for
-from flask_login import login_required, login_user,current_user
+from flask_login import login_required, login_user,current_user,logout_user
 from App.models import User, db , Exercise
 from App.controllers.user import create_user,editEmail,check_password
 
