@@ -7,33 +7,9 @@ from App.controllers.user import create_user,editEmail,check_password
 
 
 
-def getExercises():
-  muscle = 'abdominals'
-  api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
-  response = requests.get(api_url, headers={'X-Api-Key': 'NwmKx1s20Ive3BSqoYMvmw==zbTgNEmqqVzTlGT4'})
-  print("HERE")
 
-  if response.status_code == requests.codes.ok:
-   response_json = json.loads(response.text)
-
-# Convert the JSON string to a Python list
-  exercises = response_json
-  for x in exercises:
-      exercise=Exercise(name=x["name"],muscle=x["muscle"],category=x["type"],equipment=x['equipment'],difficulty=x["difficulty"],instructions=x["instructions"])
-      db.session.add(exercise)
-      db.session.commit()
-      print(x["name"])
-      print("Exercises added")
-    # return exercises
-  else:
-    print("Error:", response.status_code, response.text)
 
   
-#getExercises()
-
-
-
-
 
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
 

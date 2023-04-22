@@ -1,7 +1,7 @@
-import click, pytest, sys
+import click, pytest, sys, requests, json
+from App.models import Exercise
 from flask import Flask
 from flask.cli import with_appcontext, AppGroup
-
 from App.database import db, get_migrate
 from App.main import create_app
 from App.controllers import ( create_user, get_all_users_json, get_all_users )
@@ -11,12 +11,33 @@ from App.controllers import ( create_user, get_all_users_json, get_all_users )
 app = create_app()
 migrate = get_migrate(app)
 
+
+
+def getExercises():
+    muscle = 'abdominals'
+    api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
+    response = requests.get(api_url, headers={'X-Api-Key': 'NwmKx1s20Ive3BSqoYMvmw==zbTgNEmqqVzTlGT4'})   
+    if response.status_code == requests.codes.ok:
+        response_json = json.loads(response.text)
+        # Convert the JSON string to a Python list
+        exercises = response_json
+        for x in exercises:
+            exercise=Exercise(name=x["name"],muscle=x["muscle"],category=x["type"],equipment=x['equipment'],difficulty=x["difficulty"],instructions=x["instructions"])
+            db.session.add(exercise)
+            db.session.commit()
+            print("Exercises added")
+    else:
+        print("Error:")
+
+
+
 # This command creates and initializes the database
 @app.cli.command("init", help="Creates and initializes the database")
 def initialize():
     db.drop_all()
     db.create_all()
     create_user(username='bob', password='bobpass',email='bob@email.com')
+    getExercises()
     print('database intialized')
 
 '''
