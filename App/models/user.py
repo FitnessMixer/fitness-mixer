@@ -8,7 +8,7 @@ class User(db.Model, UserMixin):
     username =  db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String(120), nullable=False)
     email =  db.Column(db.String, nullable=False, unique=True)
-    # routine = db.relationship('Routine', backref='user', lazy=True, cascade="all, delete-orphan")
+    routine = db.relationship('Routine', backref='user', lazy=True, cascade="all, delete-orphan")
 
     def __init__(self, username, password,email):
         self.username = username
