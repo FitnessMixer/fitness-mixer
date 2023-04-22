@@ -1,51 +1,24 @@
 from App.models import Routine
 from App.database import db
 
-# def get_all_userRoutines(user):
 
-# def get_all_users_json():
-#     users = User.query.all()
-#     if not users:
-#         return []
-#     users = [user.get_json() for user in users]
-#     return users
+def create_routine(user_id,name,e1,e2,e3,e4,e5,target,difficulty,sets,reps):
+    newroutine = Routine(user_id=user_id,name=name,e1=e1,e2=e2,e3=e3,e4=e4,e5=e5,target=target,difficulty=difficulty,sets=sets,reps=reps)
+    db.session.add(newuser);
+    db.session.commit()
+    return newuser;
 
-# def update_user(id, username,self):
-# # user = get_user(id)
-#     # if user:
-#     self.username = username
-#     return True;
-    
-# def editUserName(self, userID,username,email,phoneNumber):
-#     # user=User.query.get(userID)
-#     self.username=username
-#     self.phoneNumber=phoneNumber
-#     self.email=email
-#     return True
+def get_routine_by_name(name):
+    return Routine.query.filter_by(name=name).first()
 
-# def editphoneNumber(self,phoneNumber,email):
-#     # user=User.query.get(userID)
-#     # user.username=username
-#     self.phoneNumber=phoneNumber;
-#     self.email=email;
-#     return True;
+def get_all_users():
+    return Routine.query.all()
 
-# def editEmail(self,email):
-#     # user=User.query.get(userID)
-#     self.email=email
-#     return True;
+def get_all_user_routines_json(user):
+    routines = Routines.query.filter_by(user_id=user.id).all()
+    if not routines:
+        return []
+    routines = [routines.get_json() for routine in routines]
+    return routines
 
-# def deleteAccount(self,userID):
-#     # data=request.json();
-#     # User del_user;
-#     # del_user=User.query.filter_by(userID=data["userID"])
-#     db.session.delete(self)
-#     db.session.commit()
-#     return True
-#     return None
 
-# def signUP(self):
-#     # user=User(username,password,phoneNumber,email,workoutLevel)
-#     db.session.add(self)
-#     db.session.commit()
-#     return True;
