@@ -15,19 +15,23 @@ migrate = get_migrate(app)
 
 def getExercises():
     muscle = 'abdominals'
-    api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
-    response = requests.get(api_url, headers={'X-Api-Key': 'NwmKx1s20Ive3BSqoYMvmw==zbTgNEmqqVzTlGT4'})   
-    if response.status_code == requests.codes.ok:
-        response_json = json.loads(response.text)
-        # Convert the JSON string to a Python list
-        exercises = response_json
-        for x in exercises:
-            exercise=Exercise(name=x["name"],muscle=x["muscle"],category=x["type"],equipment=x['equipment'],difficulty=x["difficulty"],instructions=x["instructions"])
-            db.session.add(exercise)
-            db.session.commit()
-            print("Exercises added")
-    else:
-        print("Error:")
+    i=0
+    muscles=['abdominals','abductors','adductors','biceps','calves','chest','forearms','glutes','hamstrings','lats','lower_back','middle_back','neck','quadriceps','traps','triceps']
+    for m in muscles:
+        api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscles[i])
+        response = requests.get(api_url, headers={'X-Api-Key': 'NwmKx1s20Ive3BSqoYMvmw==zbTgNEmqqVzTlGT4'})
+        i+=1   
+        if response.status_code == requests.codes.ok:
+            response_json = json.loads(response.text)
+            # Convert the JSON string to a Python list
+            exercises = response_json
+            for x in exercises:
+                exercise=Exercise(name=x["name"],muscle=x["muscle"],category=x["type"],equipment=x['equipment'],difficulty=x["difficulty"],instructions=x["instructions"])
+                db.session.add(exercise)
+                db.session.commit()
+                print("Exercises added")
+        else:
+            print("Error:")
 
 
 
