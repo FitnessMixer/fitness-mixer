@@ -172,7 +172,7 @@ def edit_password():
    return redirect('/home')
 
 
-@index_view.route('/logout', methods=['GET'])
+@index_views.route('/logout', methods=['GET'])
 @login_required
 def logout_action():
   logout_user()
