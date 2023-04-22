@@ -1,4 +1,4 @@
-from App.models import User
+from App.models.user import User
 from App.database import db
 
 def create_user(username,password,email):
@@ -29,24 +29,21 @@ def update_user(id, username,self):
     self.username = username
     return True;
     
-def editUserName(self, userID,username,email,phoneNumber):
+def editUserName(self, userID,username):
     # user=User.query.get(userID)
     self.username=username
-    self.phoneNumber=phoneNumber
-    self.email=email
+    db.session.commit()
     return True
 
-def editphoneNumber(self,phoneNumber,email):
-    # user=User.query.get(userID)
-    # user.username=username
-    self.phoneNumber=phoneNumber;
-    self.email=email;
-    return True;
 
 def editEmail(self,email):
-    # user=User.query.get(userID)
     self.email=email
+    db.session.commit()
     return True;
+
+def editPassword(self,password):
+    self.set_password(password);
+    db.session.commit()
 
 def deleteAccount(self,userID):
     # data=request.json();
@@ -65,4 +62,4 @@ def signUP(self):
 
 def check_password(self, password):
     """Check hashed password."""
-    return check_password_hash(self.password, password)
+    return self.check_password_hash(self.password, password)

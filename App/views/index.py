@@ -1,8 +1,8 @@
 import requests, json
-from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash
-from flask_login import login_required, login_user
+from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash,url_for
+from flask_login import login_required, login_user,current_user
 from App.models import User, db , Exercise
-from App.controllers import create_user
+from App.controllers.user import create_user,editEmail,check_password
 
 
 
@@ -110,7 +110,7 @@ def home_page():
 def login_action():
   data = request.form
   user = User.query.filter_by(username=data['username']).first()
-  if user or user.check_password(password=data['password']):  # check credentials
+  if user and user.check_password(password=data['password']):  # check credentials
     flash('Logged in successfully.')  # send message to next page
     login_user(user)  # login the user
     return render_template('home.html')  # redirect to main page if login successful
@@ -119,7 +119,60 @@ def login_action():
     flash('Invalid username or password')  # send message to next page
     return redirect('/login')
   pass
+
+@index_views.route('/edit', methods=['GET'])
+@index_views.route('/edit', methods=['GET'])
+@login_required
+def edit_page():
+  return render_template('editProfile.html')
+
+
+@index_views.route('/editemail', methods=['POST'])
+@login_required
+def edit_email():
   
+   data = request.form["new_email"]
+   user = User.query.filter_by(username=current_user.username).first()
+   if user:
+      current_user.editEmail(data)
+      flash('Email Changed Sucessfully.')  # send message to next page
+   else:
+      flash('Email Change Unsucessful.')  # send message to next page
+   
+   return redirect('/home')
+
+
+@index_views.route('/editusername', methods=['POST'])
+@login_required
+def edit_username():
+  
+   data = request.form["new_user"]
+   user = User.query.filter_by(username=current_user.username).first()
+   if user:
+      current_user.editUserName(data)
+      flash('Username Changed Sucessfully.')  # send message to next page
+   else:
+      flash('Username Change Unsucessful.')  # send message to next page
+   
+   return redirect('/home')
+
+
+@index_views.route('/editpassword', methods=['POST'])
+@login_required
+def edit_password():
+  
+   data = request.form["new_password"]
+   user = User.query.filter_by(username=current_user.username).first()
+   if user:
+      current_user.editpassword(data)
+      flash('Password Changed Sucessfully.')  # send message to next page
+   else:
+      flash('Password Changed Unsucessful.')  # send message to next page
+   
+   return redirect('/home')
+   
+
+
 
 
 #getExercises()
