@@ -1,13 +1,14 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 from App.database import db
+# from App.models.exercise import Routine
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username =  db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String(120), nullable=False)
     email =  db.Column(db.String, nullable=False, unique=True)
-    # user_routine = db.relationship('user_routine', backref='user', lazy=True, cascade="all, delete-orphan")
+    # routine = db.relationship('Routine', backref='user', lazy=True, cascade="all, delete-orphan")
 
     def __init__(self, username, password,email):
         self.username = username
