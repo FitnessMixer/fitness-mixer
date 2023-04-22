@@ -11,15 +11,14 @@ def getExercises():
   muscle = 'abdominals'
   api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
   response = requests.get(api_url, headers={'X-Api-Key': 'NwmKx1s20Ive3BSqoYMvmw==zbTgNEmqqVzTlGT4'})
+  print("HERE")
 
   if response.status_code == requests.codes.ok:
    response_json = json.loads(response.text)
 
 # Convert the JSON string to a Python list
   exercises = response_json
-    
   for x in exercises:
-    
       exercise=Exercise(name=x["name"],muscle=x["muscle"],category=x["type"],equipment=x['equipment'],difficulty=x["difficulty"],instructions=x["instructions"])
       db.session.add(exercise)
       db.session.commit()
@@ -30,8 +29,8 @@ def getExercises():
     print("Error:", response.status_code, response.text)
 
   
-
 #getExercises()
+
 
 
 
@@ -53,7 +52,7 @@ def health_check():
     return jsonify({'status':'healthy'})
 
 @index_views.route('/users', methods=['GET'])
-def displaySignup():
+def displayUsers():
     return render_template('users.html')
 
 @index_views.route('/', methods=['GET'])
@@ -61,13 +60,12 @@ def displaySignup():
 def signup_page():
   return render_template('signup.html')
 
+
 @index_views.route('/signup', methods=['POST'])
 def signup():
     data=request.form
     try:
       newuser=create_user(username=data["username"],password=data["password"],email=data["email"])
-      #db.session.add(newuser)
-      #db.session.commit()  # save user
       login_user(newuser)  # login the user
       flash('Account Created!')  # send message
       return redirect('/home') # redirect to homepage
@@ -79,6 +77,7 @@ def signup():
 @index_views.route('/loadlist',methods=['GET'])
 @login_required
 def loadList():
+  getExercises()
   return render_template("home.html",exercises=Exercise.query.all())
   pass
 
