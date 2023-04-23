@@ -74,8 +74,9 @@ def filter(muscle):
 
 @index_views.route('/filter/<string:difficulty>')
 @login_required
-def filterbyDif(difficulty):
-  return render_template('home.html',exercises=Exercise.query.filter_by(difficulty=difficulty))
+def filterbyDifficulty(difficulty):
+  ex=Exercise.query.filter_by(difficulty=difficulty).first()
+  return render_template('home.html',exercises=ex)
 
 
 @index_views.route('/', methods=['GET'])

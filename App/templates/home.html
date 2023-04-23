@@ -20,13 +20,11 @@
   </div>    
   <div class ="wrapper">
     <div class ="sidebar">
-      
       <ul>
-        
         <li><a href="/logout"><i class="fa-solid fa-list fa-2xl"></i>></i>Logout</a></li>
         <li><a href="/mylist"><i class="fa-solid fa-list fa-2xl"></i> Workout Lists</a></li>
         <div class="dropdown">
-          <li><a href="/filter"><i class="fa-solid fa-search fa-2xl"></i>Filter by Difficulty</a></li>
+          <li><a href="#"><i class="fa-solid fa-search fa-2xl"></i>Filter by Difficulty</a></li>
           <div class="dropdown-content">
             <li><a href="/filter/beginner"><i class="fa-solid fa-search fa-2xl"></i>Beginner</a></li>
             <li><a href="/filter/intermediate"></a><i class="fa-solid fa-search fa-2xl"></i>Intermediate</a></li>
@@ -96,31 +94,28 @@
             <a href="/filter/triceps"><i class="fa-solid fa-search fa-2xl"></i>Triceps</a></li>
           </div>
         </div>
+
           {% if current_user.is_authenticated %}
-        
             {% for exercise in exercises %}
               <div class="card" style="padding:1em; border: 2px solid black;">
                 <span class="card-title">{{exercise.name}}</span>
-                
                   <p>Muscle: {{exercise.muscle}}</p>
-    
-                <p>Category: {{exercise.category}}</p>
-                <p>Difficulty: {{exercise.difficulty}}</p>
-                <div class="card-action">
-                  <input id="AddButton" type="submit" class="blue text-white btn" Value="Add to Workout">
+                  <p>Category: {{exercise.category}}</p>
+                  <p>Difficulty: {{exercise.difficulty}}</p>
+                  <div class="card-action">
+                    <input id="AddButton" type="submit" class="blue text-white btn" Value="Add to Workout">
+                  </div>
               </div>
-            </div>
           {% endfor %}
-        {% endif %}
-            
+        {% endif %} 
       </ul>
     </div>
-    </div> 
+   </div> 
     
     <div class= "info">
       
     
-  </div>
+    </div>
     
   
   

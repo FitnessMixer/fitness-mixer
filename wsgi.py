@@ -29,7 +29,7 @@ def getExercises():
                 exercise=Exercise(name=x["name"],muscle=x["muscle"],category=x["type"],equipment=x['equipment'],difficulty=x["difficulty"],instructions=x["instructions"])
                 db.session.add(exercise)
                 db.session.commit()
-                print("Exercises added")
+                #print("Exercises added")
         else:
             print("Error:")
 
