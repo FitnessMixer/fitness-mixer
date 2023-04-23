@@ -39,7 +39,7 @@ def signup_page():
 def signup():
     data=request.form
     try:
-      newuser=create_user(username=data["username"],password=data["password"],email=data["email"])
+      newuser=create_user(username=data["username"],password=data["password"],email=data["email"],no_routines=0)
       flash('Account Created!')  # send message
       login_user(newuser)  # login the user
       return redirect('/home') # redirect to homepage
