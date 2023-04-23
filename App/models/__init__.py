@@ -1,5 +1,6 @@
 from .user import *
 from .exercise import *
+from .routine import *
 # from .staff import *
 # from .customer import *
 # from .game import *
