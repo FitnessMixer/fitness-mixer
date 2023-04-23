@@ -70,13 +70,13 @@ def edit():
 @index_views.route('/filter/<string:muscle>')
 @login_required
 def filter(muscle):
-  return render_template('home.html',exercises=Exercise.query.filter_by(muscle=muscle))
+  return render_template('filtered.html',exercises=Exercise.query.filter_by(muscle=muscle))
 
 @index_views.route('/filter/<string:difficulty>')
 @login_required
 def filterbyDifficulty(difficulty):
   ex=Exercise.query.filter_by(difficulty=difficulty).first()
-  return render_template('home.html',exercises=ex)
+  return render_template('filtered.html',exercises=ex)
 
 
 @index_views.route('/addExercise/<int:exerciseID>')

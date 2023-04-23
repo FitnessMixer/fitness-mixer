@@ -94,20 +94,6 @@
             <a href="/filter/triceps"><i class="fa-solid fa-search fa-2xl"></i>Triceps</a></li>
           </div>
         </div>
-
-          {% if current_user.is_authenticated %}
-            {% for exercise in exercises %}
-              <div class="card" style="padding:1em; border: 2px solid black;">
-                <span class="card-title">{{exercise.name}}</span>
-                  <p>Muscle: {{exercise.muscle}}</p>
-                  <p>Category: {{exercise.category}}</p>
-                  <p>Difficulty: {{exercise.difficulty}}</p>
-                  <div class="card-action">
-                    <a href='/addExercise/{{exercise.id}}'><button id="AddButton" class="blue text-white btn">Add to Workout</button></a>
-                  </div>
-              </div>
-          {% endfor %}
-        {% endif %} 
       </ul>
     </div>
    </div> 
