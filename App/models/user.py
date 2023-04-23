@@ -46,7 +46,23 @@ class User(db.Model, UserMixin):
                 db.session.rollback()
             return None
         return None
-    
+
+    def editUserName(self,username):
+        # user=User.query.get(userID)
+        self.username=username
+        db.session.commit()
+        return True
+
+
+    def editEmail(self,email):
+        self.email=email
+        db.session.commit()
+        return True;
+
+    def editPassword(self,password):
+        self.set_password(password);
+        db.session.commit()
+
 
 
 

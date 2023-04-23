@@ -126,7 +126,6 @@ def edit_page():
 @index_views.route('/editemail', methods=['POST'])
 @login_required
 def edit_email():
-  
    data = request.form["new_email"]
    user = User.query.filter_by(username=current_user.username).first()
    if user:
@@ -145,7 +144,7 @@ def edit_username():
    data = request.form["new_user"]
    user = User.query.filter_by(username=current_user.username).first()
    if user:
-      current_user.editUserName(data)
+      current_user.editUserName(username=data)
       flash('Username Changed Sucessfully.')  # send message to next page
    else:
       flash('Username Change Unsucessful.')  # send message to next page
@@ -160,7 +159,7 @@ def edit_password():
    data = request.form["new_password"]
    user = User.query.filter_by(username=current_user.username).first()
    if user:
-      current_user.editpassword(data)
+      current_user.editPassword(password=data)
       flash('Password Changed Sucessfully.')  # send message to next page
    else:
       flash('Password Changed Unsucessful.')  # send message to next page
