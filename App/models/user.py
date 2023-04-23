@@ -1,7 +1,10 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
+
 from App.database import db
-from App.models import routine
+from App.models import exercise , routine
+
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -30,4 +33,16 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         """Check hashed password."""
         return check_password_hash(self.password, password)
+
+    def addExercise(self,exerciseID,name):
+        ex=Exercise.query.get(id=exerciseID)
+        if(ex):
+            try:
+                exer=Routine(user_id=self.id,exerciseID=exerciseID,name=ex.name)
+                db.session.add(exer)
+                db.session.commit()
+                return exer
+            except Exception:
+                db.session.rollback()
+        return None
 

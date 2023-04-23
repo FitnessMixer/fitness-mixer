@@ -19,7 +19,7 @@ class Routine(db.Model, UserMixin):
     #reps=db.Column(db.Integer,nullable=False)
     #sets=db.Column(db.Integer,nullable=False)
 
-    def __init__(self,user_id,name,exerciseID):
+    def __init__(self,user_id,exerciseID,name):
         self.name=name
         self.exerciseID=exerciseID
         #e1,e2,e3,e4,e5,target,difficulty,sets,reps

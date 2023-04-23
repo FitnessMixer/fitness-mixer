@@ -1,7 +1,7 @@
 import requests, json
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash,url_for
 from flask_login import login_required, login_user,current_user,logout_user
-from App.models import User, db , Exercise
+from App.models import User, db , Exercise, Routine
 from App.controllers.user import create_user,editEmail,check_password
 
 
@@ -57,7 +57,7 @@ def loadList():
 @index_views.route('/mylist',methods=['GET'])
 @login_required
 def mylist():
-  myex=Exercise.query.all()
+  myex=current_user.routine
   return render_template('home.html',exercises=myex)
   pass
 
@@ -78,6 +78,18 @@ def filterbyDifficulty(difficulty):
   ex=Exercise.query.filter_by(difficulty=difficulty).first()
   return render_template('home.html',exercises=ex)
 
+
+@index_views.route('/addExercise/<int:exerciseID>/<string:name>')
+@login_required
+def addEXercise(exerciseID,name):
+  userEx=current_user.addExercise(exerciseID=exerciseID,name=name)
+  if (userEx):
+    flash("Exercise Added")
+    return redirect('/mylist')
+  else:
+    flash("Not added")
+    return redirect('/home')
+  pass
 
 @index_views.route('/', methods=['GET'])
 @index_views.route('/login', methods=['GET'])
