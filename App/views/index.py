@@ -33,6 +33,10 @@ def getExercises():
 
 @index_views.route('/', methods=['GET'])
 def signup():
+    db.drop_all()
+    db.create_all()
+    create_user(username='bob', password='bobpass',email='bob@email.com',no_routines=0)
+    getExercises()
     return render_template('signup.html')
 @index_views.route('/init', methods=['GET'])
 def init():
