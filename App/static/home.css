@@ -24,7 +24,7 @@ body{
   margin:0;
 }
 
-.flex-container>div{
+.flex-container{
   display:flex;
   justify-content: center;
   box-sizing: border-box;
