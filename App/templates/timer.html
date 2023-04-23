@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+  <title> Fitness Mixer</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/main.js"></script>
+  
+  <script src="https://kit.fontawesome.com/5eb8cc4bfc.js" crossorigin="anonymous"></script>
+
+  
+</head>
+
+<body>
+  
+  <div class="main-header">
+    <image id="img" src="/static/images/black logo.png" alt="title image"/>
+   
+  </div>
+    
+  <div class ="wrapper">
+    <div class ="sidebar">
+      
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-list fa-2xl"></i> Workout Lists</a></li>
+        
+        <li><a href="#"><i class="fa-solid fa-compass fa-2xl"></i>Explore Workouts</a></li>
+        
+        <li><a href="#"><i class="fa-solid fa-user fa-2xl"></i> Profile Setting</a></li>
+        
+      </ul>
+    </div> <!--end div for sidebar-->
+  </div>
+    <div class= "main-content">
+        <div class="greeting">
+            <div class="timer-greeting">
+                {{exercise.name}}
+            </div>
+
+            
+            <form>
+                <label for="minutes">Minutes:</label>
+                <input type="number" id="minutes" name="minutes" min="0" value="0">
+                
+                <label for="seconds">Seconds:</label>
+                <input type="number" id="seconds" name="seconds" min="0" max="59" value="0">
+                
+                <button type="button" onclick="startTimer()">Start</button>
+                <button type="button" onclick="pauseTimer()">Pause</button>
+                <button type="button" onclick="resetTimer()">Reset</button>
+                <button type="button" onclick="resumeTimer()">Resume</button>
+              </form>
+              
+              <div id="timer">0:00</div>
+            </div>
+            <ul>
+        
+                    <div class="card">
+                      <span class="card-title">{{routine.name}}
+                    </div>
+                    
+              </ul>
+        </div>
+    </div>
+</body>  
+</html>
