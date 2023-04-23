@@ -22,9 +22,6 @@ class Routine(db.Model, UserMixin):
         self.userID=user_id
         #self.exercise1=e1;
         #self.exericse2=e2#these are not names but the ids of exercises save them and then look for that id in the table to display specifics
-        #self.exericse3=e3
-        #self.exercise4=e4
-        #self.exercise5=e5
         #self.target=target
         #self.sets=sets
         #self.reps=reps
