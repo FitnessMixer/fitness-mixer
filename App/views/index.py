@@ -32,7 +32,7 @@ def getExercises():
 
 
 @index_views.route('/', methods=['GET'])
-def login():
+def signup():
     return render_template('signup.html')
 @index_views.route('/init', methods=['GET'])
 def init():
