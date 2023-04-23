@@ -122,7 +122,7 @@ def edit_page():
   return render_template('editProfile.html')
 
 
-@index_views.route('/editemail', methods=['POST'])
+@index_views.route('/edit/email', methods=['POST'])
 @login_required
 def edit_email():
    data = request.form["new_email"]
@@ -136,7 +136,7 @@ def edit_email():
    return redirect('/home')
 
 
-@index_views.route('/editusername', methods=['POST'])
+@index_views.route('/edit/username', methods=['POST'])
 @login_required
 def edit_username():
   
@@ -151,7 +151,7 @@ def edit_username():
    return redirect('/home')
 
 
-@index_views.route('/editpassword', methods=['POST'])
+@index_views.route('/edit/password', methods=['POST'])
 @login_required
 def edit_password():
   
