@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+  <title> Fitness Mixer</title>
+  <link rel="stylesheet" href="/static/home.css">
+  
+  <script src="https://kit.fontawesome.com/5eb8cc4bfc.js" crossorigin="anonymous"></script>
+
+  
+</head>
+
+<body>
+  
+  <div class="main-header">
+    <image id="img" src="/static/img/orange logo.png" alt="title image"/>
+   
+  </div>    
+  <div class ="wrapper">
+    <div class ="sidebar">
+      <ul>
+        <li><a href="/logout"><i class="fa-solid fa-list fa-2xl"></i>></i>Logout</a></li>
+        <li><a href="/mylist"><i class="fa-solid fa-list fa-2xl"></i> Workout Lists</a></li>
+        <div class="dropdown">
+          <li><a href="#"><i class="fa-solid fa-search fa-2xl"></i>Filter by Difficulty</a></li>
+          <div class="dropdown-content">
+            <li><a href="/filter/beginner"><i class="fa-solid fa-search fa-2xl"></i>Beginner</a></li>
+            <li><a href="/filter/intermediate"></a><i class="fa-solid fa-search fa-2xl"></i>Intermediate</a></li>
+            <li><a href="/filter/expert"><i class="fa-solid fa-search fa-2xl"></i>Expert</a></li>
+          </div>
+        </div>
+        <li><a href="/loadlist"><i class="fa-solid fa-compass fa-2xl"></i>Explore Workouts</a></li>
+        <li><a href="/editProfile"><i class="fa-solid fa-user fa-2xl"></i> Profile Setting</a></li>
+      </ul>
+    </div> <!--end div for sidebar-->
+  </div>
+    <div class= "main-content">
+      <div class="greeting">
+        <h1 style="color:black">Welcome {{current_user.username}}</h1>
+        <h3 style="color:black">What are we working on today?</h3>
+        <br>
+        <br>
+      </div>
+        {% if current_user.is_authenticated %}
+            {% for exercise in exercises %}
+              <div class="card" style="padding:1em; border: 2px solid black;">
+                <span class="card-title">{{exercise.name}}</span>
+                  <p>Muscle: {{exercise.muscle}}</p>
+                  <p>Category: {{exercise.category}}</p>
+                  <p>Difficulty: {{exercise.difficulty}}</p>
+                  <p>Recommended Equipment:{{exercise.equipment}}</p>
+                  <p>Instructions: {{exercise.instructions}}</p>
+                  <!--<div class="card-action">
+                    <a href='/addExercise/{{exercise.id}}'><button id="AddButton" class="blue text-white btn">Add to Workout</button></a>
+                  </div>-->
+              </div>
+          {% endfor %}
+        {% endif %} 
+      </ul>
+    </div>
+   </div> 
+    
+    <div class= "info">
+      
+    
+    </div>
+    
+  
+  
+</body>
+</html>

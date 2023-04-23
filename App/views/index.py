@@ -58,7 +58,7 @@ def loadList():
 @login_required
 def mylist():
   myex=current_user.routine
-  return render_template('home.html',exercises=myex)
+  return render_template('mylist.html',exercises=myex)
   pass
 
 @index_views.route('/editProfile')
