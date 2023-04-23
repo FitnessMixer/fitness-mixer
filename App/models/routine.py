@@ -17,15 +17,8 @@ class Routine(db.Model, UserMixin):
     def __init__(self,user_id,exerciseID,name):
         self.name=name
         self.exerciseID=exerciseID
-        #e1,e2,e3,e4,e5,target,difficulty,sets,reps
-        #self.difficulty=difficulty
-        self.userID=user_id
-        #self.exercise1=e1;
-        #self.exericse2=e2#these are not names but the ids of exercises save them and then look for that id in the table to display specifics
-        #self.target=target
-        #self.sets=sets
-        #self.reps=reps
-        self.id=id(self)
+        self.userID=user_id    
+        #self.id=id(self)
         pass
 
     def get_json(self):
