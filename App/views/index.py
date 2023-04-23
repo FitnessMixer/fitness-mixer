@@ -195,10 +195,10 @@ def edit_password():
 @index_views.route('/complete/<int:user_exercise_id>')
 @login_required
 def remove(user_exercise_id):
-  removeEx=Routine.query.filter_by(id=user_exercise_id).first()
+  routine=Routine.query.filter_by(id=user_exercise_id,userID=current_user.id).first()
   flash("Error here")
-  if (removeEx or removeEx.id==current_user.id):
-    current_user.removeRoutine()
+  if (routine):
+    check=routine.release_routine()
     flash("Workout Completed")
     return redirect('/mylist')
   else:

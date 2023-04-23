@@ -2,6 +2,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 from App.database import db
 from App.models import user, exercise
+
 class Routine(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     userID=db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
@@ -20,6 +21,11 @@ class Routine(db.Model, UserMixin):
         self.userID=user_id    
         #self.id=id(self)
         pass
+
+    def release_routine(self):
+            db.session.delete(self)
+            db.session.commit()
+            return True
 
     def get_json(self):
         return{
