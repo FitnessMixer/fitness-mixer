@@ -18,10 +18,17 @@ body{
   background-repeat: no-repeat;
   
   /* background-color: rgba(200,100,0,.5); */
-
+  
   background-blend-mode: multiply; 
   height:100%;
   margin:0;
+}
+
+.flex-container>div{
+  display:flex;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-direction: row;
 }
 
 h1{
@@ -60,6 +67,7 @@ h1{
   color: white;
   font-size: 11px;
   align-items: center;
+  overflow: auto;
 }
 
 .wrapper .sidebar ul li{
@@ -96,7 +104,6 @@ h1{
   display: block;
   color:black;
   background-color: #f05b16;
-  
   /* opacity: 0.3; */
   text-align: center;
   margin-left:auto;
@@ -110,4 +117,8 @@ h1{
 .card .card-title:{
   color:black;
   opacity:1.0;
+}
+
+.card-content {
+  padding: 20px;
 }

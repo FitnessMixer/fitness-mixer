@@ -7,33 +7,7 @@ from App.controllers.user import create_user,editEmail,check_password
 
 
 
-def getExercises():
-  url = "https://musclewiki.p.rapidapi.com/exercises"
-  headers = {
-  	"X-RapidAPI-Key": "abf5c13524mshc9214300313f611p1be4e0jsnfb6846048bd3",
-  	"X-RapidAPI-Host": "musclewiki.p.rapidapi.com"
-  }
 
-  response = requests.request("GET", url, headers=headers)
-  jason=json.loads(response.text)
-
-  for x in jason:
-    muscle=x["target"]["Primary"][0]
-    if x["Force"]:
-      exercises=Exercise(name=x["exercise_name"],muscle=muscle,category=x["Category"],difficulty=x["Difficulty"],force=x["Force"])
-      db.session.add(exercises);
-    else:
-      exercises=Exercise(name=x["exercise_name"],muscle=muscle,category=x["Category"],difficulty=x["Difficulty"],force="None")
-      db.session.add(exercises);
-    db.session.commit()
-    #print(x["Difficulty"])
-  print("Exercises added")
-  return jason
-
-
-
-
-  
 
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
 
@@ -44,7 +18,7 @@ def login():
 def init():
     db.drop_all()
     db.create_all()
-    create_user('bob', 'bobpass','bob@email.com')
+    create_user('bob', 'bobpass','bob@email.com',0)
     return jsonify(message='db initialized!')
 
 @index_views.route('/health', methods=['GET'])
@@ -66,8 +40,8 @@ def signup():
     data=request.form
     try:
       newuser=create_user(username=data["username"],password=data["password"],email=data["email"])
-      login_user(newuser)  # login the user
       flash('Account Created!')  # send message
+      login_user(newuser)  # login the user
       return redirect('/home') # redirect to homepage
     except Exception:  # attempted to insert a duplicate user
       db.session.rollback()

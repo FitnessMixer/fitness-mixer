@@ -22,14 +22,12 @@
     <div class ="sidebar">
       
       <ul>
+        
         <li><a href="/logout"><i class="fa-solid fa-list fa-2xl"></i>></i>Logout</a></li>
-
         <li><a href="/mylist"><i class="fa-solid fa-list fa-2xl"></i> Workout Lists</a></li>
-        
+        <li><a href="/filter"><i class="fa-solid fa-search fa-2xl"></i> Filter</a></li>
         <li><a href="/loadlist"><i class="fa-solid fa-compass fa-2xl"></i>Explore Workouts</a></li>
-        
         <li><a href="/editProfile"><i class="fa-solid fa-user fa-2xl"></i> Profile Setting</a></li>
-        
       </ul>
     </div> <!--end div for sidebar-->
   </div>
@@ -40,26 +38,27 @@
         <br>
         <br>
       </div>
-
-      <ul>
+      <div class="flex-container">
+        <ul>
+          {% if current_user.is_authenticated %}
         
-        {% if current_user.is_authenticated %}
-        
-          {% for exercise in exercises %}
-            <div class="card" style="padding:1em; border: 2px solid black;">
-              <span class="card-title">{{exercise.name}}
-                <p>Muscle: {{exercise.muscle}}</p>
+            {% for exercise in exercises %}
+              <div class="card" style="padding:1em; border: 2px solid black;">
+                <span class="card-title">{{exercise.name}}</span>
+                
+                  <p>Muscle: {{exercise.muscle}}</p>
     
                 <p>Category: {{exercise.category}}</p>
                 <p>Difficulty: {{exercise.difficulty}}</p>
                 <div class="card-action">
-                  <input id="AddButton" type="submit" class="btn" Value="Add to Workout">
+                  <input id="AddButton" type="submit" class="blue text-white btn" Value="Add to Workout">
               </div>
             </div>
           {% endfor %}
         {% endif %}
             
       </ul>
+    </div>
     </div> 
     
     <div class= "info">
