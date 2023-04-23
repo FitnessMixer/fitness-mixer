@@ -37,7 +37,8 @@ def initialize():
     db.create_all()
     create_user(username='bob', password='bobpass',email='bob@email.com')
     getExercises()
-    return render_template('signup.html')
+    return redirect('/signup')
+
 @index_views.route('/init', methods=['GET'])
 def init():
     db.drop_all()
