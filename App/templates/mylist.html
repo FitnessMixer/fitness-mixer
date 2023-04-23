@@ -47,14 +47,14 @@
             {% for exercise in exercises %}
               <div class="card" style="padding:1em; border: 2px solid black;">
                 <span class="card-title">{{exercise.name}}</span>
-                  <p>Muscle: {{exercise.muscle}}</p>
-                  <p>Category: {{exercise.category}}</p>
-                  <p>Difficulty: {{exercise.difficulty}}</p>
-                  <p>Recommended Equipment:{{exercise.equipment}}</p>
-                  <p>Instructions: {{exercise.instructions}}</p>
-                  <!--<div class="card-action">
-                    <a href='/addExercise/{{exercise.id}}'><button id="AddButton" class="blue text-white btn">Add to Workout</button></a>
-                  </div>-->
+                  <p>Muscle: {{exercise.exercise.muscle}}</p>
+                  <p>Category: {{exercise.exercise.category}}</p>
+                  <p>Difficulty: {{exercise.exercise.difficulty}}</p>
+                  <p>Recommended Equipment:{{exercise.exercise.equipment}}</p>
+                  <p>Instructions: {{exercise.exercise.instructions}}</p>
+                  <div class="card-action">
+                    <a href='/complete/{{exercise.id}}'><button id="AddButton" class="blue text-white btn">Complete</button></a>
+                  </div>
               </div>
           {% endfor %}
         {% endif %} 

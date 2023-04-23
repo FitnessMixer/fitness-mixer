@@ -9,11 +9,6 @@ class Routine(db.Model, UserMixin):
     exercise=db.relationship('Exercise')
     name = db.Column(db.String, nullable=False, unique=True)
 
-    #exercise1=db.Column(db.Integer,nullable=True)
-    #exericse2=db.Column(db.Integer,nullable=True)
-    #exericse3=db.Column(db.Integer,nullable=True)
-    #exercise4=db.Column(db.Integer,nullable=True)
-    #exercise5=db.Column(db.Integer,nullable=True)
     #target= db.Column(db.String,nullable=False)
     #difficulty =  db.Column(db.String, nullable=False)
     #reps=db.Column(db.Integer,nullable=False)

@@ -38,7 +38,7 @@ class User(db.Model, UserMixin):
         ex=Exercise.query.get(exerciseID)
         if(ex):
             try:
-                exer=Routine(user_id=self.id,exerciseID=exerciseID,name=ex.name)
+                exer=Routine(self.id,exerciseID,ex.name)
                 db.session.add(exer)
                 db.session.commit()
                 return exer
@@ -62,6 +62,14 @@ class User(db.Model, UserMixin):
     def editPassword(self,password):
         self.set_password(password);
         db.session.commit()
+
+    def removeRoutine(user_exercise_id):
+        rout=Routine.query.get(user_exercise_id)
+        if rout.user==self.id:
+            db.session.delete(rout)
+            db.session.commit()
+            return True
+        return None
 
 
 

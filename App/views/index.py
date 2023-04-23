@@ -165,6 +165,21 @@ def edit_password():
    
    return redirect('/home')
 
+@index_views.route('/complete/<int:user_exercise_id>')
+@login_required
+def remove(user_exercise_id):
+  removeEx=Routine.query.get(user_exercise_id)
+  if (removeEx and removeEx.id==current_user.id):
+    current_user.removeRoutine()
+    flash("Workout Completed")
+    return redirect('/mylist')
+  else:
+    flash ("Workout not Removed")
+  return redirect('/home')
+
+
+
+  pass
 
 @index_views.route('/logout', methods=['GET'])
 @login_required
