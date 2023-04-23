@@ -67,6 +67,16 @@ def edit():
   return render_template('editProfile.html')
   pass
 
+@index_views.route('/filter/<string:muscle>')
+@login_required
+def filter(muscle):
+  return render_template('home.html',exercises=Exercise.query.filter_by(muscle=muscle))
+
+@index_views.route('/filter/<string:difficulty>')
+@login_required
+def filterbyDif(difficulty):
+  return render_template('home.html',exercises=Exercise.query.filter_by(difficulty=difficulty))
+
 
 @index_views.route('/', methods=['GET'])
 @index_views.route('/login', methods=['GET'])
