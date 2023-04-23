@@ -79,10 +79,10 @@ def filterbyDifficulty(difficulty):
   return render_template('home.html',exercises=ex)
 
 
-@index_views.route('/addExercise/<int:exerciseID>/<string:name>')
+@index_views.route('/addExercise/<int:exerciseID>')
 @login_required
-def addEXercise(exerciseID,name):
-  userEx=current_user.addExercise(exerciseID=exerciseID,name=name)
+def addEXercise(exerciseID):
+  userEx=current_user.addExercise(exerciseID=exerciseID)
   if (userEx):
     flash("Exercise Added")
     return redirect('/mylist')
