@@ -32,7 +32,7 @@ def getExercises():
 
 
 @index_views.route('/', methods=['GET'])
-def signup():
+def initialize():
     db.drop_all()
     db.create_all()
     create_user(username='bob', password='bobpass',email='bob@email.com')
