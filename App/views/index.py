@@ -4,7 +4,7 @@ from flask_login import login_required, login_user,current_user,logout_user
 from App.models import User, db , Exercise, Routine
 from App.controllers.user import create_user,editEmail,check_password
 
-#eh big dawd
+#eh big dawd bruh
 
 
 
@@ -18,8 +18,9 @@ def login():
 def init():
     db.drop_all()
     db.create_all()
-    create_user('bob', 'bobpass','bob@email.com',0)
+    create_user('bob', 'bobpass','bob@email.com')
     return jsonify(message='db initialized!')
+
 
 @index_views.route('/health', methods=['GET'])
 def health_check():
