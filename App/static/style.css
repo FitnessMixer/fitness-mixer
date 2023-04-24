@@ -16,6 +16,7 @@ body {
   height: 100vh;
   width: 500vh;
   animation: background-fade 25s infinite;
+  background-color: orange;
 }
 
 @keyframes background-fade {
