@@ -12,7 +12,8 @@
 }
 /* Hi xar */
 body{
-  background-image: url("img/shapeybg.png");
+  /* background-image: url("/workspace/fitness-mixer/App/static/img/shapeybg.png"); */
+  
   /* opacity: 0.4; */
   background-size: 1400px 1000px;
   /* background-repeat: no-repeat; */
@@ -22,6 +23,10 @@ body{
   background-blend-mode: multiply; 
   height:100%;
   margin:0;
+}
+
+.gradient-bg {
+  background: linear-gradient(to bottom, #ff6a00, #ffa500);
 }
 
 .flex-container{
@@ -100,20 +105,6 @@ h1{
   margin-right:auto;
 }
 
-.muscle-cards{
-  display:flexbox;
-  padding-left:17%;
-  padding-top:5px;
-
-}
-.muscle-img{
-  /* display: flex; */
-  width:200px;
-  height:auto;
-  border-radius:10px;
-  
-}
-
 .card{
   display: block;
   color:black;
@@ -126,6 +117,7 @@ h1{
   /* border: 1px solid #ccc; */
   border-radius:10px;
   width:400px;
+  margin-bottom: 10px;
 }
 
 .card .card-title{
@@ -156,7 +148,7 @@ h1{
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f05b16;
+  background-color: #ff882c;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -179,3 +171,69 @@ h1{
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+form {
+  padding-top: 15px;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding-top: 10px;
+}
+
+#timer {
+  font-size: 40px;
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+input[type="number"] {
+  width: 80px;
+  margin-left: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.buttons-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.button {
+  font-size: 1.2rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.countdown {
+  font-size: 3rem;
+  margin-top: 30px;
+  text-align: center;
+}
