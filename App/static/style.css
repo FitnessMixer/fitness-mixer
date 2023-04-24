@@ -20,37 +20,37 @@ body {
 
 @keyframes background-fade {
     0% {
-      background-image: url('img/2ndlike.jpeg');
+      background-image: url('/workspace/fitness-mixer/App/static/img/2ndlike.jpeg')
     }
     10% {
-      background-image: url('img/image2.jpeg');
+      background-image: url('/workspace/fitness-mixer/App/static/img/image2.jpeg');
     }
     20% {
-      background-image: url('img/image3.jpeg');
+      background-image: url('/workspace/fitness-mixer/App/static/img/image3.jpeg');
     }
     30% {
-      background-image: url('img/image4.jpeg');
+      background-image: url('/App/static/img/image4.jpeg');
     }
     40% {
-      background-image: url('img/firstlike.jpeg');
+      background-image: url('/App/static/img/firstlike.jpeg');
     }
     50% {
-      background-image: url('img/very vibrant.jpeg');
+      background-image: url('/App/static/img/very vibrant.jpeg');
     }
     60% {
-        background-image: url('img/image7.jpeg');
+        background-image: url('/App/static/img/image7.jpeg');
       }
     70% {
-        background-image: url('img/image8.jpeg');
+        background-image: url('/App/static/img/image8.jpeg');
       }
     80% {
-        background-image: url('img/image9.jpeg');
+        background-image: url('/App/static/img/image9.jpeg');
       }
     90% {
-        background-image: url('img/image10.jpeg');
+        background-image: url('/App/static/img/image10.jpeg');
       }
     100% {
-        background-image: url('img/lastlike.jpeg');
+        background-image: url('/App/static/img/lastlike.jpeg');
       }
   }
 
