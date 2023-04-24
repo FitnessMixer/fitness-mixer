@@ -101,17 +101,13 @@ def addEXercise(exerciseID):
     return redirect('/home')
   pass
 
-def getRandomInt(min, max):
-  min = math.ceil(min)
-  max = math.floor(max)
-  return math.floor(math.random() * (max - min) + min)
 
 @index_views.route('/generate')
 @login_required
 def generate():
   i=0
   while i<5:
-    num=random.randint(1,50)
+    num=randint(1,50)
     user=current_user.addExercise(exerciseID=num)
     if user:
       continue
