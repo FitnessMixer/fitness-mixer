@@ -1,5 +1,6 @@
 from flask_login import login_user, login_manager, logout_user, LoginManager
 from flask_jwt_extended import create_access_token, jwt_required, JWTManager
+from .exercise import getExercises
 
 from App.models import User
 
@@ -41,3 +42,10 @@ def setup_jwt(app):
         return User.query.get(identity)
 
     return jwt
+
+def initialize():
+    db.drop_all()
+    db.create_all()
+    rob = create_customer('rob', 'robpass','rob@email.com')
+    getExercises()
+    print(rob.name)
