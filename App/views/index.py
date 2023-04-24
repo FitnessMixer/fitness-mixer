@@ -1,4 +1,4 @@
-import requests, json, math
+import requests, json, random
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash,url_for
 from flask_login import login_required, login_user,current_user,logout_user
 from App.models import User, db , Exercise, Routine
@@ -111,7 +111,7 @@ def getRandomInt(min, max):
 def generate():
   i=0
   while i<5:
-    num=getRandomInt(1,50)
+    num=random.randint(1,50)
     user=current_user.addExercise(exerciseID=num)
     if user:
       continue
