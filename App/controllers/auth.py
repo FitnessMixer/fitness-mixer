@@ -38,15 +38,33 @@ def setup_jwt(app):
         return None
 
     @jwt.user_lookup_loader
-    def user_lookup_callback(_jwt_header, jwt_data):
+    def user_lookup_callback( _jwt_header, jwt_data):
         identity = jwt_data["sub"]
         return User.query.get(identity)
 
     return jwt
 
 def initialize():
+
+    # try:
+    # # Start a transaction
+    #     with session.begin():
+    #     # Perform database operations here
     db.drop_all()
     db.create_all()
     rob = create_user('rob', 'robpass','rob@email.com')
     getExercises()
     print(rob.name)
+    #     # If an error occurs, raise an exception
+    # raise Exception("An error occurred during the transaction")
+
+    # # If no exception is raised, commit the transaction
+    #         session.commit()
+    # except Exception as e:
+    # # If an exception is raised, roll back the transaction
+    #     session.rollback()
+    # print("Transaction rolled back due to error:", e)
+    # finally:
+    # # Close the session
+    #     session.close()
+   

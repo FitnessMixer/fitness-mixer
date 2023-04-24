@@ -1,5 +1,6 @@
 from App.models.exercise import Exercise
 from App.database import db
+import requests,json
 
 
 def add_exercise(userID,routine_id,exercise_id):

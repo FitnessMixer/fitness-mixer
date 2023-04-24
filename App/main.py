@@ -1,4 +1,6 @@
 import os
+import csv
+
 from flask import Flask
 from flask_login import LoginManager, current_user
 from flask_uploads import DOCUMENTS, IMAGES, TEXT, UploadSet, configure_uploads
@@ -6,6 +8,8 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 from datetime import timedelta
+from App.controllers import ( create_user, get_all_users_json, get_all_users,getExercises )
+from App.models import User,Exercise
 
 from App.database import init_db,db
 from App.config import config
@@ -45,9 +49,13 @@ def create_app(config_overrides={}):
     setup_jwt(app)
     setup_flask_login(app)
 
-    with app.app_context():
-        db.create_all()
+    
 
     app.app_context().push()
+    with app.app_context():
+        db.drop_all()
+        db.create_all()
+        create_user(username='bob', password='bobpass',email='bob@email.com')
+        getExercises()
     return app
 
