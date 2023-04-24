@@ -101,6 +101,27 @@ def addEXercise(exerciseID):
     return redirect('/home')
   pass
 
+def getRandomInt(min, max):
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min) + min)
+
+@index_views.route('/generate')
+@login_required
+def generate():
+  i=0
+  while i<5:
+    num=getRandomInt(1,50)
+    user=current_user.addExercise(exerciseID=num)
+    if user:
+      continue
+    else:
+      return redirect('/home')
+
+    i+=1
+  return redirect('/mylist')
+  pass
+
 @index_views.route('/', methods=['GET'])
 @index_views.route('/login', methods=['GET'])
 def login_page():
@@ -126,7 +147,6 @@ def login_action():
     return redirect('/login')
   pass
 
-@index_views.route('/edit', methods=['GET'])
 @index_views.route('/edit', methods=['GET'])
 @login_required
 def edit_page():
@@ -188,9 +208,6 @@ def remove(user_exercise_id):
   else:
     flash ("Workout not Removed")
   return redirect('/home')
-
-
-
   pass
 
 @index_views.route('/logout', methods=['GET'])
