@@ -45,7 +45,7 @@ def init():
     db.create_all()
     create_user('bob', 'bobpass','bob@email.com')
     getExercises();
-    return jsonify(message='db initialized!')
+    return redirect('/signup')
 
 
 @index_views.route('/health', methods=['GET'])
