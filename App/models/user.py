@@ -63,7 +63,7 @@ class User(db.Model, UserMixin):
 
     def removeRoutine(user_exercise_id):
         rout=Routine.query.get(user_exercise_id)
-        if rout.user==self.id:
+        if rout.user==rout.user_id:
             db.session.delete(rout)
             db.session.commit()
             return True

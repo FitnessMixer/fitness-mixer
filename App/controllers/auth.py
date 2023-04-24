@@ -52,7 +52,8 @@ def initialize():
     #     # Perform database operations here
     db.drop_all()
     db.create_all()
-    rob = create_user('rob', 'robpass','rob@email.com')
+    user=User('rob', 'robpass','rob@email.com')
+    db.session.add(user)
     getExercises()
     # print(rob.name)
     #     # If an error occurs, raise an exception
