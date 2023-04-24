@@ -20,15 +20,20 @@
   </div>
     
   <div class ="wrapper">
-    <div class ="sidebar">
-      
+    <div class="sidebar">
       <ul>
-        <li><a href="/mylist"><i class="fa-solid fa-list fa-2xl"></i> Workout Lists</a></li>
-        
+        <li><a href="/logout"><i class="fa-solid fa-right-from-bracket fa-2xl"></i>Logout</a></li>
+        <li><a href="/mylist"><i class="fa-solid fa-list fa-2xl"></i>Workouts List</a></li>
+        <li class="dropdown">
+          <a href="#"><i class="fa-solid fa-search fa-2xl"></i>Filter by Difficulty</a>
+          <ul class="dropdown-menu">
+            <li><a href="/filterbyDifficulty/beginner">Beginner</a></li>
+            <li><a href="/filterbyDifficulty/intermediate">Intermediate</a></li>
+            <li><a href="/filterbyDifficulty/expert">Expert</a></li>
+          </ul>
+        </li>
         <li><a href="/loadlist"><i class="fa-solid fa-compass fa-2xl"></i>Explore Workouts</a></li>
-        
-        <li><a href="/editProfile"><i class="fa-solid fa-user fa-2xl"></i> Profile Setting</a></li>
-        
+        <li><a href="/editProfile"><i class="fa-solid fa-user fa-2xl"></i>Edit Profile</a></li>
       </ul>
     </div> <!--end div for sidebar-->
   </div>

@@ -87,39 +87,57 @@ h1{
   position:fixed;
 } */
 
-.sidebar{
-  display:flex;
-  margin:0;
-  position:fixed;
-  width: 10%;
-  height:100%;
-  /* background: #FCB82E; */
-  /* background-color: #f39200; */
-  background-color: rgba(15, 14, 14, 0.87); 
-  color: black;
-  font-size: 11px;
+.sidebar {
+  background-color: rgba(0, 0, 0, 0.8); /* black with 80% opacity */
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  z-index: 1;
+}
+
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar li {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar a {
+  display: flex;
   align-items: center;
-  overflow: auto;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
 }
 
-.wrapper .sidebar ul li{
-  padding: 50px;
-  border: none;
-  margin:0;
-  text-align:center;
+.sidebar a i {
+  width: 10px;
+  margin-right: 20px;
+  font-size: 18px;
 }
 
-.wrapper .sidebar ul li a{
-  color: rgba(255,255,255);
-  display:block;
-  padding:3px;
-  font-size:1.5em;
-  text-align: center;
- 
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* white with 10% opacity */
 }
 
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.8); /* black with 80% opacity */
+}
 
-
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 
 .main-content .greeting{
   display: block;
