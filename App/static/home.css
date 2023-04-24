@@ -65,10 +65,11 @@ h1{
   /* background: rgb(241,148,26);
   background: linear-gradient(151deg, rgba(241,148,26,0.7259278711484594) 35%, rgba(207,10,4,0.6138830532212884) 74%);
    */
-   background: rgb(241,148,26);
-   background: linear-gradient(151deg, rgba(241,148,26,0.8715861344537815) 35%, rgba(207,10,4,0.8323704481792717) 74%);
+  background: rgb(241,148,26);
+  background: linear-gradient(151deg, rgba(241,148,26,0.8715861344537815) 35%, rgba(207,10,4,0.8323704481792717) 74%);
 
   overflow:auto;
+  
 }
 
 #img{
@@ -94,11 +95,11 @@ h1{
   top: 0;
   bottom: 0;
   width: 200px;
-  z-index: 1;
+  margin-top: 56px;
 }
 
 .sidebar ul {
-  margin: 0;
+  margin: 0; 
   padding: 0;
   list-style: none;
 }
@@ -114,6 +115,7 @@ h1{
   padding: 10px;
   color: #fff;
   text-decoration: none;
+  position: relative;
 }
 
 .sidebar a i {
