@@ -28,6 +28,9 @@ def configure_app(app, config, overrides):
         else:
             app.config[key] = config[key]
 
+with app.app_context():
+    db.create_all()
+
 def create_app(config_overrides={}):
     app = Flask(__name__, static_url_path='/static')
     configure_app(app, config, config_overrides)
