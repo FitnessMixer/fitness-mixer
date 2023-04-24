@@ -52,9 +52,10 @@ def initialize():
     #     # Perform database operations here
     db.drop_all()
     db.create_all()
-    user=User('rob', 'robpass','rob@email.com')
+    user=User('rob23', 'robpass','rob345@email.com')
     db.session.add(user)
-    getExercises()
+    # getExercises()
+    
     # print(rob.name)
     #     # If an error occurs, raise an exception
     # raise Exception("An error occurred during the transaction")
