@@ -15,7 +15,7 @@
 <body>
   
   <div class="main-header">
-    <image id="img" src="/static/img/orange logo.png" alt="title image"/>
+    <image id="img" src="/static/img/white logo.png" alt="title image"/>
    
   </div>    
   <div class ="wrapper">
@@ -45,15 +45,18 @@
       </div>
         {% if current_user.is_authenticated %}
             {% for exercise in exercises %}
-              <div class="card" style="padding:1em; border: 2px solid black;">
+              <div class="card">
                 <span class="card-title">{{exercise.name}}</span>
-                  <p>Muscle: {{exercise.exercise.muscle}}</p>
+                 <!--<p>Muscle: {{exercise.exercise.muscle}}</p>
                   <p>Category: {{exercise.exercise.category}}</p>
                   <p>Difficulty: {{exercise.exercise.difficulty}}</p>
-                  <p>Recommended Equipment:{{exercise.exercise.equipment}}</p>
+                  <p>Recommended Equipment:{{exercise.exercise.equipment}}</p> 
                   <p>Instructions: {{exercise.exercise.instructions}}</p>
+                  <span class=" card-title"> HIIT Workout</span>
+                  <span class=" card-title"> HIIT Workout</span> -->
+
                   <div class="card-action">
-                    <a href='/complete/{{exercise.id}}'><button id="AddButton" class="blue text-white btn">Complete</button></a>
+                  <a href='/complete/{{exercise.id}}'><button id="AddButton" class="blue text-white btn">Add Workout</button></a>
                   </div>
               </div>
           {% endfor %}
