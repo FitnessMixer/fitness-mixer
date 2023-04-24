@@ -96,6 +96,7 @@ h1{
   bottom: 0;
   width: 200px;
   margin-top: 56px;
+  z-index: 2;
 }
 
 .sidebar ul {
