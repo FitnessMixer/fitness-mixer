@@ -55,7 +55,7 @@ def create_app(config_overrides={}):
     with app.app_context():
         db.drop_all()
         db.create_all()
-        user=User(username='bob245ii09483609', password='bobpass',email='bob344309642@email.com')
+        user=User(username='bob', password='bobpass',email='bob@email.com')
         db.session.add(user)
         getExercises()
     return app
