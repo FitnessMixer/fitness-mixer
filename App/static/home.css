@@ -12,10 +12,10 @@
 }
 /* Hi xar */
 body{
-  background-image: url("/workspace/fitness-mixer/App/static/img/shapeybg.png");
+  background-image: url("img/shapeybg.png");
   /* opacity: 0.4; */
   background-size: 1400px 1000px;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   
   /* background-color: rgba(200,100,0,.5); */
   
