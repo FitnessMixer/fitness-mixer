@@ -13,19 +13,34 @@
 /* Hi xar */
 body{
   /* background-image: url("img/shapeybg.png"); */
-  /* background-color: beige; */
-  /* background-color: #fff5e6; */
-    background-image: url("img/mesh-gradient (4).png");  
 
-  /* opacity: 0.4; */
-  background-size: 1400px 1000px;
+    background-image: url("img/mesh-gradient (4).png"); 
+    background-size: cover;
+    background-attachment: fixed; /* Keeps the background image fixed */ 
+
+  /* background-size: 1400px 1000px; */
    background-repeat: no-repeat; 
   
-  /* background-color: rgba(200,100,0,.5); */
   
   background-blend-mode: multiply; 
   height:100%;
   margin:0;
+}
+
+body::before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url('img/mesh-gradient (4).jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: scroll; /* Makes the background image scroll */
 }
 
 /* .gradient-bg {
@@ -46,11 +61,12 @@ h1{
   height:57px;
   width:100%;
   padding: 5px;
-  /* background-color:#FF7401;  */
-  background: rgb(241,148,26);
-  background: linear-gradient(151deg, rgba(241,148,26,0.7259278711484594) 35%, rgba(207,10,4,0.6138830532212884) 74%);
   
-   /* background-color: #ee77158a; */
+  /* background: rgb(241,148,26);
+  background: linear-gradient(151deg, rgba(241,148,26,0.7259278711484594) 35%, rgba(207,10,4,0.6138830532212884) 74%);
+   */
+   background: rgb(241,148,26);
+   background: linear-gradient(151deg, rgba(241,148,26,0.8715861344537815) 35%, rgba(207,10,4,0.8323704481792717) 74%);
 
   overflow:auto;
 }
@@ -66,12 +82,13 @@ h1{
   padding:0;
 }
   
- .wrapper{
+ /* .wrapper{
   display:flex;
-  position: relative;
-}
+  position:fixed;
+} */
 
-.wrapper .sidebar{
+.sidebar{
+  display:flex;
   margin:0;
   position:fixed;
   width: 10%;
@@ -96,16 +113,13 @@ h1{
   color: rgba(255,255,255);
   display:block;
   padding:3px;
-  /* text-align: center/left/right; */
+  font-size:1.5em;
+  text-align: center;
  
 }
 
 
 
-/* .wrapper .sidebar ul li a .fas{
-  height:auto;
-  
-} */
 
 .main-content .greeting{
   display: block;
@@ -138,25 +152,56 @@ h1{
   border: 6px solid;
   border-image: linear-gradient(to bottom right, #f12711, #f5af19);
   border-image-slice: 1;
-  /* border-radius:10px; */
 }
 
-.card{
-  display: block;
-  color:black;
-  background-color: #f05b16;
-  /* opacity: 0.3; */
+
+
+table {
+  border-collapse: collapse;
+  margin:10%;
+  margin-top:1%;
+  width: 90%;
+  background: rgba(255, 186, 128, 0.21);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.2px);
+  -webkit-backdrop-filter: blur(3.2px);
+  border: 1px solid rgba(255, 186, 128, 0.3);
+}
+
+thead {
+  background-color: #fc7a23;
+  color: #ffffff;
+}
+
+th {
   text-align: center;
-  margin-left:auto;
-  margin-right:auto;
-  padding: 5px;
-  /* border: 1px solid #ccc; */
-  border-radius:10px;
-  width:400px;
-  margin-bottom: 10px;
+  padding: 10px;
 }
 
+/* tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+} */
 
+tbody tr:hover {
+  background-color: #fd7a4683;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.fa-circle-info{
+  color: black;
+  text-decoration: none;
+}
+
+.fa-right-from-bracket{
+  color: white;
+  text-decoration:none;
+}
 .card .card-title{
   color:black;
   opacity:1.0;

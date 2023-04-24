@@ -21,14 +21,14 @@
   <div class ="wrapper">
     <div class ="sidebar">
       <ul>
-        <li><a href="/logout"><i class="fa-solid fa-list fa-2xl"></i>></i>Logout</a></li>
+        <li><a href="/logout"><i class="fa-solid fa-right-from-bracket fa-2xl"></i>Logout</a></li>
         <li><a href="/mylist"><i class="fa-solid fa-list fa-2xl"></i> Workout Lists</a></li>
         <div class="dropdown">
           <li><a href="#"><i class="fa-solid fa-search fa-2xl"></i>Filter by Difficulty</a></li>
           <div class="dropdown-content">
-            <li><a href="/filterbyDifficulty/beginner"><i class="fa-solid fa-search fa-2xl"></i>Beginner</a></li>
+            <!-- <li><a href="/filterbyDifficulty/beginner"><i class="fa-solid fa-search fa-2xl"></i>Beginner</a></li>
             <li><a href="/filterbyDifficulty/intermediate"></a><i class="fa-solid fa-search fa-2xl"></i>Intermediate</a></li>
-            <li><a href="/filterbyDifficulty/expert"><i class="fa-solid fa-search fa-2xl"></i>Expert</a></li>
+            <li><a href="/filterbyDifficulty/expert"><i class="fa-solid fa-search fa-2xl"></i>Expert</a></li> -->
           </div>
         </div>
         <li><a href="/loadlist"><i class="fa-solid fa-compass fa-2xl"></i>Explore Workouts</a></li>
@@ -43,20 +43,42 @@
         <br>
         <br>
       </div>
-        {% if current_user.is_authenticated %}
-            {% for exercise in exercises %}
-              <div class="card" style="padding:1em; border: 2px solid black;">
-                <span class="card-title">{{exercise.name}}</span>
-                  <p>Muscle: {{exercise.muscle}}</p>
-                  <p>Category: {{exercise.category}}</p>
-                  <p>Difficulty: {{exercise.difficulty}}</p>
-                  <div class="card-action">
-                    <a href='/addExercise/{{exercise.id}}'><button id="AddButton" class="blue text-white btn">Add to Workout</button></a>
-                  </div>
-              </div>
-          {% endfor %}
-        {% endif %} 
-      </ul>
+
+    
+      <table>
+       
+        <thead>
+                <tr>
+                  <th>Workout Name</th>
+                  <th>Category</th>
+                  <th>Difficulty</th>
+                  <th>Instructions</th>
+                </tr>
+              
+         </thead>       
+         
+            
+              
+              <tbody>
+                
+
+                    <tr>
+                      {% if current_user.is_authenticated %}
+                        {% for exercise in exercises %}  
+
+                      <td>{{exercise.name}}</td>
+                      <td>{{exercise.category}}</td>
+                      <td>{{exercise.difficulty}}</td>
+                      <td><a href='/addExercise/{{exercise.id}}'><i class="fa-solid fa-circle-info"></i></a></td> 
+                    </tr>
+                    
+            </tbody>
+              {% endfor %}
+                    {% endif %}
+        </table>
+              
+         
+      <!-- </ul> -->
     </div>
    </div> 
     
