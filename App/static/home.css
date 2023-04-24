@@ -13,10 +13,13 @@
 /* Hi xar */
 body{
   /* background-image: url("img/shapeybg.png"); */
-  background-color: beige;
+  /* background-color: beige; */
+  /* background-color: #fff5e6; */
+    background-image: url("img/mesh-gradient (4).png");  
+
   /* opacity: 0.4; */
   background-size: 1400px 1000px;
-  /* background-repeat: no-repeat; */
+   background-repeat: no-repeat; 
   
   /* background-color: rgba(200,100,0,.5); */
   
@@ -43,7 +46,12 @@ h1{
   height:57px;
   width:100%;
   padding: 5px;
-  background:#FF7401; 
+  /* background-color:#FF7401;  */
+  background: rgb(241,148,26);
+  background: linear-gradient(151deg, rgba(241,148,26,0.7259278711484594) 35%, rgba(207,10,4,0.6138830532212884) 74%);
+  
+   /* background-color: #ee77158a; */
+
   overflow:auto;
 }
 
@@ -68,7 +76,9 @@ h1{
   position:fixed;
   width: 10%;
   height:100%;
-  background: #FCB82E;
+  /* background: #FCB82E; */
+  /* background-color: #f39200; */
+  background-color: rgba(15, 14, 14, 0.87); 
   color: black;
   font-size: 11px;
   align-items: center;
@@ -99,7 +109,7 @@ h1{
 
 .main-content .greeting{
   display: block;
-  color:white;
+  color:black;
   text-align:center;
   margin-left:auto;
   margin-right:auto;
@@ -118,7 +128,17 @@ h1{
   /* display: flex; */
   width:200px;
   height:auto;
+  border:2px solid transparent;
   border-radius:10px;
+  transition: border 0.3s ease;
+}
+
+
+.muscle-img:hover {
+  border: 6px solid;
+  border-image: linear-gradient(to bottom right, #f12711, #f5af19);
+  border-image-slice: 1;
+  /* border-radius:10px; */
 }
 
 .card{
