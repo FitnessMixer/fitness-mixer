@@ -90,12 +90,13 @@ h1{
 
 .sidebar {
   background-color: rgba(0, 0, 0, 0.8); /* black with 80% opacity */
+  width: 200px;
+  height:100%;
   position: sticky;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 200px;
-  height:100%;
+  
   /* z-index: 1; */
 }
 
@@ -116,7 +117,7 @@ h1{
   padding: 10px;
   color: #fff;
   text-decoration: none;
-  position: relative;
+  position: sticky;
 }
 
 .sidebar a i {
