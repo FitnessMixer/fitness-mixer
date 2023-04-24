@@ -53,7 +53,7 @@ def initialize():
     db.drop_all()
     db.create_all()
     user=User('rob23', 'robpass','rob345@email.com')
-    db.session.add(user)
+    # db.session.add(user)
     # getExercises()
     
     # print(rob.name)
