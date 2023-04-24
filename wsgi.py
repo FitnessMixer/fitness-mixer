@@ -13,6 +13,7 @@ migrate = get_migrate(app)
 
 
 
+
 def getExercises():
     muscle = 'abdominals'
     i=0

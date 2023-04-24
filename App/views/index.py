@@ -35,7 +35,7 @@ def getExercises():
 def initialize():
     db.drop_all()
     db.create_all()
-    create_user(username='bob', password='bobpass',email='bob@email.com')
+    # create_user(username='bob', password='bobpass',email='bob@email.com')
     getExercises()
     return redirect('/signup')
 
@@ -43,9 +43,9 @@ def initialize():
 def init():
     db.drop_all()
     db.create_all()
-    create_user('bob', 'bobpass','bob@email.com')
+    # create_user('bob', 'bobpass','bob@email.com')
     getExercises();
-    return jsonify(message='db initialized!')
+    return redirect('/signup')
 
 
 @index_views.route('/health', methods=['GET'])

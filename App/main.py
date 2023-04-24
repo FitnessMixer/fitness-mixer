@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 from datetime import timedelta
 
-from App.database import init_db
+from App.database import init_db,db
 from App.config import config
 
 from App.controllers import (
@@ -28,6 +28,7 @@ def configure_app(app, config, overrides):
         else:
             app.config[key] = config[key]
 
+
 def create_app(config_overrides={}):
     app = Flask(__name__, static_url_path='/static')
     configure_app(app, config, config_overrides)
@@ -43,5 +44,10 @@ def create_app(config_overrides={}):
     init_db(app)
     setup_jwt(app)
     setup_flask_login(app)
+
+    with app.app_context():
+        db.create_all()
+
     app.app_context().push()
     return app
+
