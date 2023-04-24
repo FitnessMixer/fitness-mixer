@@ -8,8 +8,7 @@ def add_exercise(userID,routine_id,exercise_id):
     exercise.routine.append(routine)
     db.session.add();
     db.session.commit()
-    return newuser;
-
+    return True
 def getExercises():
     muscle = 'abdominals'
     i=0

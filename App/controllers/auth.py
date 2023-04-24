@@ -54,7 +54,7 @@ def initialize():
     db.create_all()
     rob = create_user('rob', 'robpass','rob@email.com')
     getExercises()
-    print(rob.name)
+    # print(rob.name)
     #     # If an error occurs, raise an exception
     # raise Exception("An error occurred during the transaction")
 
