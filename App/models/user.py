@@ -11,14 +11,12 @@ class User(db.Model, UserMixin):
     username =  db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String(120), nullable=False)
     email =  db.Column(db.String, nullable=False, unique=True)
-    no_routines=db.Column(db.Integer,nullable=True,default=0);
     routine = db.relationship('Routine', backref='user')
 
-    def __init__(self, username, password,email, no_routines):
+    def __init__(self, username, password,email):
         self.username = username
         self.set_password(password)
         self.email=email
-        self.no_routines=no_routines
         self.id=id(self)
 
     def get_json(self):
@@ -38,7 +36,7 @@ class User(db.Model, UserMixin):
         ex=Exercise.query.get(exerciseID)
         if(ex):
             try:
-                exer=Routine(user_id=self.id,exerciseID=exerciseID,name=ex.name)
+                exer=Routine(self.id,exerciseID,ex.name)
                 db.session.add(exer)
                 db.session.commit()
                 return exer
@@ -46,7 +44,31 @@ class User(db.Model, UserMixin):
                 db.session.rollback()
             return None
         return None
-    
+
+    def editUserName(self,username):
+        # user=User.query.get(userID)
+        self.username=username
+        db.session.commit()
+        return True
+
+
+    def editEmail(self,email):
+        self.email=email
+        db.session.commit()
+        return True;
+
+    def editPassword(self,password):
+        self.set_password(password);
+        db.session.commit()
+
+    def removeRoutine(user_exercise_id):
+        rout=Routine.query.get(user_exercise_id)
+        if rout.user==self.id:
+            db.session.delete(rout)
+            db.session.commit()
+            return True
+        return None
+
 
 
 

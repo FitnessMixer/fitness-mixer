@@ -4,22 +4,49 @@ from flask_login import login_required, login_user,current_user,logout_user
 from App.models import User, db , Exercise, Routine
 from App.controllers.user import create_user,editEmail,check_password
 
-
+#eh big dawd bruh
 
 
 
 
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
+def getExercises():
+    muscle = 'abdominals'
+    i=0
+    muscles=['abdominals','abductors','adductors','biceps','calves','chest','forearms','glutes','hamstrings','lats','lower_back','middle_back','neck','quadriceps','traps','triceps']
+    for m in muscles:
+        api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscles[i])
+        response = requests.get(api_url, headers={'X-Api-Key': 'NwmKx1s20Ive3BSqoYMvmw==zbTgNEmqqVzTlGT4'})
+        i+=1   
+        if response.status_code == requests.codes.ok:
+            response_json = json.loads(response.text)
+            # Convert the JSON string to a Python list
+            exercises = response_json
+            for x in exercises:
+                exercise=Exercise(name=x["name"],muscle=x["muscle"],category=x["type"],equipment=x['equipment'],difficulty=x["difficulty"],instructions=x["instructions"])
+                db.session.add(exercise)
+                db.session.commit()
+                #print("Exercises added")
+        else:
+            print("Error:")
+
 
 @index_views.route('/', methods=['GET'])
-def login():
-    return render_template('signup.html')
+def initialize():
+    db.drop_all()
+    db.create_all()
+    create_user(username='bob', password='bobpass',email='bob@email.com')
+    getExercises()
+    return redirect('/signup')
+
 @index_views.route('/init', methods=['GET'])
 def init():
     db.drop_all()
     db.create_all()
-    create_user('bob', 'bobpass','bob@email.com',0)
+    create_user('bob', 'bobpass','bob@email.com')
+    getExercises();
     return jsonify(message='db initialized!')
+
 
 @index_views.route('/health', methods=['GET'])
 def health_check():
@@ -58,7 +85,7 @@ def loadList():
 @login_required
 def mylist():
   myex=current_user.routine
-  return render_template('home.html',exercises=myex)
+  return render_template('mylist.html',exercises=myex)
   pass
 
 @index_views.route('/editProfile')
@@ -69,14 +96,13 @@ def edit():
 
 @index_views.route('/filter/<string:muscle>')
 @login_required
-def filter(muscle):
-  return render_template('home.html',exercises=Exercise.query.filter_by(muscle=muscle))
+def filterMuscle(muscle):
+  return render_template('filtered.html',exercises=Exercise.query.filter_by(muscle=muscle))
 
-@index_views.route('/filter/<string:difficulty>')
+@index_views.route('/filterbyDifficulty/<string:difficulty>')
 @login_required
-def filterbyDifficulty(difficulty):
-  ex=Exercise.query.filter_by(difficulty=difficulty).first()
-  return render_template('home.html',exercises=ex)
+def filterByDifficulty(difficulty):
+  return render_template('filtered.html',exercises=Exercise.query.filter_by(difficulty=difficulty))
 
 
 @index_views.route('/addExercise/<int:exerciseID>')
@@ -123,10 +149,9 @@ def edit_page():
   return render_template('editProfile.html')
 
 
-@index_views.route('/editemail', methods=['POST'])
+@index_views.route('/edit/email', methods=['POST'])
 @login_required
 def edit_email():
-  
    data = request.form["new_email"]
    user = User.query.filter_by(username=current_user.username).first()
    if user:
@@ -138,14 +163,14 @@ def edit_email():
    return redirect('/home')
 
 
-@index_views.route('/editusername', methods=['POST'])
+@index_views.route('/edit/username', methods=['POST'])
 @login_required
 def edit_username():
   
    data = request.form["new_user"]
    user = User.query.filter_by(username=current_user.username).first()
    if user:
-      current_user.editUserName(data)
+      current_user.editUserName(username=data)
       flash('Username Changed Sucessfully.')  # send message to next page
    else:
       flash('Username Change Unsucessful.')  # send message to next page
@@ -153,20 +178,36 @@ def edit_username():
    return redirect('/home')
 
 
-@index_views.route('/editpassword', methods=['POST'])
+@index_views.route('/edit/password', methods=['POST'])
 @login_required
 def edit_password():
   
    data = request.form["new_password"]
    user = User.query.filter_by(username=current_user.username).first()
    if user:
-      current_user.editpassword(data)
+      current_user.editPassword(password=data)
       flash('Password Changed Sucessfully.')  # send message to next page
    else:
       flash('Password Changed Unsucessful.')  # send message to next page
    
    return redirect('/home')
 
+@index_views.route('/complete/<int:user_exercise_id>')
+@login_required
+def remove(user_exercise_id):
+  routine=Routine.query.filter_by(id=user_exercise_id,userID=current_user.id).first()
+  flash("Error here")
+  if (routine):
+    check=routine.release_routine()
+    flash("Workout Completed")
+    return redirect('/mylist')
+  else:
+    flash ("Workout not Removed")
+  return redirect('/home')
+
+
+
+  pass
 
 @index_views.route('/logout', methods=['GET'])
 @login_required

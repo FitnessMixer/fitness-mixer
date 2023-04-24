@@ -24,7 +24,8 @@ class Exercise(db.Model, UserMixin):
         self.instructions=instructions
         self.equipment=equipment
         pass
-
+    
+    
 
     # def __init__(self):
     #     self.id=id(self);

@@ -43,36 +43,17 @@
         <br>
         <br>
       </div>
-     
-      <div class="flex-container">
-        <div class="muscle-cards">
-          <image class="muscle-img" src="static/img/Fitness/1.png">
-          <image class="muscle-img" src="static/img/Fitness/2.png">
-          <image class="muscle-img" src="static/img/Fitness/3.png">
-          <image class="muscle-img" src="static/img/Fitness/4.png">
-          <image class="muscle-img" src="static/img/Fitness/5.png">
-          <image class="muscle-img" src="static/img/Fitness/7.png">
-          <image class="muscle-img" src="static/img/Fitness/8.png">
-          <image class="muscle-img" src="static/img/Fitness/9.png">
-          <image class="muscle-img" src="static/img/Fitness/10.png">  
-          <image class="muscle-img" src="static/img/Fitness/11.png">  
-          <image class="muscle-img" src="static/img/Fitness/12.png">  
-          <image class="muscle-img" src="static/img/Fitness/13.png">  
-          <image class="muscle-img" src="static/img/Fitness/14.png">  
-          <image class="muscle-img" src="static/img/Fitness/15.png">  
-         
-      </div>
-        </div>
-
-          {% if current_user.is_authenticated %}
+        {% if current_user.is_authenticated %}
             {% for exercise in exercises %}
               <div class="card" style="padding:1em; border: 2px solid black;">
                 <span class="card-title">{{exercise.name}}</span>
-                  <p>Muscle: {{exercise.muscle}}</p>
-                  <p>Category: {{exercise.category}}</p>
-                  <p>Difficulty: {{exercise.difficulty}}</p>
+                  <p>Muscle: {{exercise.exercise.muscle}}</p>
+                  <p>Category: {{exercise.exercise.category}}</p>
+                  <p>Difficulty: {{exercise.exercise.difficulty}}</p>
+                  <p>Recommended Equipment:{{exercise.exercise.equipment}}</p>
+                  <p>Instructions: {{exercise.exercise.instructions}}</p>
                   <div class="card-action">
-                    <a href='/addExercise/{{exercise.id}}'><button id="AddButton" class="blue text-white btn">Add to Workout</button></a>
+                    <a href='/complete/{{exercise.id}}'><button id="AddButton" class="blue text-white btn">Complete</button></a>
                   </div>
               </div>
           {% endfor %}
@@ -89,9 +70,4 @@
   
   
 </body>
-
-
-
-
-  
 </html>
