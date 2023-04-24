@@ -13,7 +13,7 @@
 /* Hi xar */
 body{
   /* background-image: url("/workspace/fitness-mixer/App/static/img/shapeybg.png"); */
-  
+
   /* opacity: 0.4; */
   background-size: 1400px 1000px;
   /* background-repeat: no-repeat; */
@@ -43,7 +43,7 @@ h1{
   height:57px;
   width:100%;
   padding: 5px;
-  background:#1F2129; 
+  background:#FE3501; 
   overflow:auto;
 }
 
@@ -105,7 +105,23 @@ h1{
   margin-right:auto;
 }
 
-.card{
+
+
+.muscle-cards{
+  display:flexbox;
+  padding-left:17%;
+  /* padding-top:2%; */
+
+}
+
+.muscle-img{
+  /* display: flex; */
+  width:200px;
+  height:auto;
+  border-radius:10px;
+}
+
+
   display: block;
   color:black;
   background-color: #f05b16;
@@ -119,6 +135,7 @@ h1{
   width:400px;
   margin-bottom: 10px;
 }
+
 
 .card .card-title{
   color:black;
