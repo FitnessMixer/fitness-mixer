@@ -1,4 +1,4 @@
-import requests, json
+import requests, json, math
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify, flash,url_for
 from flask_login import login_required, login_user,current_user,logout_user
 from App.models import User, db , Exercise, Routine
@@ -102,9 +102,9 @@ def addEXercise(exerciseID):
   pass
 
 def getRandomInt(min, max):
-  min = Math.ceil(min)
-  max = Math.floor(max)
-  return Math.floor(Math.random() * (max - min) + min)
+  min = math.ceil(min)
+  max = math.floor(max)
+  return math.floor(math.random() * (max - min) + min)
 
 @index_views.route('/generate')
 @login_required
