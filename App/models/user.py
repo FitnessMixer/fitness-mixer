@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
         self.username = username
         self.set_password(password)
         self.email=email
-        self.id=id
+        self.id=id(self)
 
     def get_json(self):
         return{
