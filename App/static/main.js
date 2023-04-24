@@ -60,3 +60,21 @@ var timerInterval;
       function resumeTimer() {
         startTimer();
       }
+
+
+window.addEventListener("scroll", function() {
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  var body = document.querySelector("body");
+  var startColor = "#ff8c00";
+  var endColor = "#ffa500";
+  var colorDiff = endColor.substring(1).split("").map(function(c, i) {
+    return (parseInt(c, 16) - parseInt(startColor.substring(1).split("")[i], 16)) / 100;
+  });
+  var newColor = startColor;
+  if (scrollTop > 0) {
+    newColor = "#" + colorDiff.map(function(c, i) {
+      return Math.round(parseInt(startColor.substring(1).split("")[i], 16) + (c * scrollTop)).toString(16);
+    }).join("");
+  }
+  body.style.background = "linear-gradient(to bottom, " + newColor + ", " + endColor + ")";
+});
