@@ -227,6 +227,10 @@ td {
   opacity:1.0;
 }
 
+.card-workout {
+  text-align: center;
+}
+
 .card-content {
   padding: 20px;
 }

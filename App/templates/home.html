@@ -67,7 +67,7 @@
 
           {% if current_user.is_authenticated %}
             {% for exercise in exercises %}
-              <div class="card" style="padding:1em; border: 2px solid black;">
+              <div class="card-workout" style="padding:1em; border: 2px solid black;">
                 <span class="card-title">{{exercise.name}}</span>
                   <p>Muscle: {{exercise.muscle}}</p>
                   <p>Category: {{exercise.category}}</p>
