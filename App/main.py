@@ -28,8 +28,6 @@ def configure_app(app, config, overrides):
         else:
             app.config[key] = config[key]
 
-with app.app_context():
-    db.create_all()
 
 def create_app(config_overrides={}):
     app = Flask(__name__, static_url_path='/static')
@@ -46,5 +44,10 @@ def create_app(config_overrides={}):
     init_db(app)
     setup_jwt(app)
     setup_flask_login(app)
+    
+    with app.app_context():
+        db.create_all()
+
     app.app_context().push()
     return app
+
