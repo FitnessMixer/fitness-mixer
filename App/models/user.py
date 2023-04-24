@@ -1,5 +1,6 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
+
 from App.database import db
 from App.models.exercise import Exercise
 from App.models.routine import Routine
@@ -17,7 +18,7 @@ class User(db.Model, UserMixin):
         self.username = username
         self.set_password(password)
         self.email=email
-        self.id=id(self)
+        self.id=id
 
     def get_json(self):
         return{
