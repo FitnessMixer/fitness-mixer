@@ -31,7 +31,7 @@ def getExercises():
             print("Error:")
 
 
-@index_views.route('/', methods=['GET'])
+@index_views.route('/', methods=['POST'])
 def initialize():
     db.drop_all()
     db.create_all()
