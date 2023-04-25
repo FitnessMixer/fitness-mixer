@@ -22,14 +22,15 @@
     <div class="sidebar">
       <ul>
         <li><a href="/logout"><i class="fa-solid fa-right-from-bracket fa-2xl"></i>Logout</a></li>
+        <li><a href="/home"><i class="fa-solid fa-house"></i>Home</a></li>
         <li><a href="/mylist"><i class="fa-solid fa-list fa-2xl"></i>Workouts List</a></li>
         <li class="dropdown">
           <a href="#"><i class="fa-solid fa-search fa-2xl"></i>Filter by Difficulty</a>
-          <!-- <ul class="dropdown-menu">
+          <ul class="dropdown-menu">
             <li><a href="/filterbyDifficulty/beginner">Beginner</a></li>
             <li><a href="/filterbyDifficulty/intermediate">Intermediate</a></li>
             <li><a href="/filterbyDifficulty/expert">Expert</a></li>
-          </ul> -->
+          </ul>
         </li>
         <li><a href="/loadlist"><i class="fa-solid fa-compass fa-2xl"></i>Explore Workouts</a></li>
         <li><a href="/editProfile"><i class="fa-solid fa-user fa-2xl"></i>Edit Profile</a></li>
@@ -53,7 +54,7 @@
                   <th>Workout Name</th>
                   <th>Category</th>
                   <th>Difficulty</th>
-                  <th>Instructions</th>
+                  <th>Add Workout</th>
                 </tr>
               
          </thead>       
@@ -70,7 +71,7 @@
                       <td>{{exercise.name}}</td>
                       <td>{{exercise.category}}</td>
                       <td>{{exercise.difficulty}}</td>
-                      <td><a href='/addExercise/{{exercise.id}}'><i class="fa-solid fa-circle-info"></i></a></td> 
+                      <td><a href='/addExercise/{{exercise.id}}'><i class="fa-solid fa-plus" style="color: #000000;"></i></a></td> 
                     </tr>
                     
             </tbody>

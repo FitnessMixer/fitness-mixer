@@ -23,6 +23,7 @@
       <ul>
         <li><a href="/logout"><i class="fa-solid fa-right-from-bracket fa-2xl"></i>Logout</a></li>
         <li><a href="/home"><i class="fa-solid fa-house"></i>Home</a></li>
+        <li><a href="/mylist"><i class="fa-solid fa-list fa-2xl"></i>Workouts List</a></li>
         <li class="dropdown">
           <a href="#"><i class="fa-solid fa-search fa-2xl"></i>Filter by Difficulty</a>
           <ul class="dropdown-menu">
@@ -45,7 +46,7 @@
       </div>
         {% if current_user.is_authenticated %}
             {% for exercise in exercises %}
-              <div class="card">
+              <div class="card-workout">
                 <span class="card-title">{{exercise.name}}</span>
                  <!--<p>Muscle: {{exercise.exercise.muscle}}</p>
                   <p>Category: {{exercise.exercise.category}}</p>
@@ -56,7 +57,7 @@
                   <span class=" card-title"> HIIT Workout</span> -->
 
                   <div class="card-action">
-                  <a href='/complete/{{exercise.id}}'><button id="AddButton" class="blue text-white btn">Add Workout</button></a>
+                  <a href='/complete/{{exercise.id}}'><button id="AddButton" class="blue text-white btn">Remove Workout</button></a>
                   </div>
               </div>
           {% endfor %}

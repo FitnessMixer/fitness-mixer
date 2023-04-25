@@ -22,6 +22,7 @@
     <div class="sidebar">
       <ul>
         <li><a href="/logout"><i class="fa-solid fa-right-from-bracket fa-2xl"></i>Logout</a></li>
+        <li><a href="/home"><i class="fa-solid fa-house"></i>Home</a></li>
         <li><a href="/mylist"><i class="fa-solid fa-list fa-2xl"></i>Workouts List</a></li>
         <li class="dropdown">
           <a href="#"><i class="fa-solid fa-search fa-2xl"></i>Filter by Difficulty</a>
@@ -40,13 +41,15 @@
       <div class="greeting">
         <h1>Welcome {{current_user.username}}</h1>
         <h3>Click on a muscle group to find more exercises</h3>
+        
+        <a href="/generate" onclick="randomRoutine()"><span class="remix">Remix</span><i class="fa-solid fa-shuffle fa-2xl" style="color: #000000;"></i></a>
         <br>
         <br>
       </div>
      
       <div class="flex-container">
         <div class="muscle-cards">
-          <a href="/generate" onclick="randomRoutine()"><image class="muscle-img" src="static/img/Fitness/1.png"></image></a>
+          
          <a href="/filter/biceps"><image class="muscle-img" src="static/img/Fitness/1.png"></image></a>
          <a href="/filter/forearms"><image class="muscle-img" src="static/img/Fitness/2.png"></image></a>
          <a href="/filter/hamstrings"><image class="muscle-img" src="static/img/Fitness/3.png"></image></a>
