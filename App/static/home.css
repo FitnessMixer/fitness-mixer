@@ -94,7 +94,7 @@ h1{
   left: 0;
   top: 0;
   bottom: 0;
-  width: 200px;
+  width: 15%;
   margin-top: 56px;
   z-index: 2;
 }
@@ -178,12 +178,11 @@ h1{
 }
 
 
-
 table {
   border-collapse: collapse;
-  margin:10%;
+  margin:15%;
   margin-top:1%;
-  width: 90%;
+  width: 85%;
   background: rgba(255, 186, 128, 0.21);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -192,10 +191,12 @@ table {
   border: 1px solid rgba(255, 186, 128, 0.3);
 }
 
+
 thead {
   background-color: #fc7a23;
   color: #ffffff;
 }
+
 
 th {
   text-align: center;
